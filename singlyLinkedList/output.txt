@@ -1,26 +1,28 @@
         Singly Linked List
 ===================================
-  (1) Create      (2) InsertFront
+  (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtIdx
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtIdx (8) Display
-  (9) Clear List  (0) Exit
+  (9) Clear       (10) Reverse
+  (0) Exit
 
-Enter Choice: 1
+Enter Choice: 3
 
 Enter Payload: A
-Created node A...
+Inserted A at back...
 List: A
 
 Press any to continue...
 
         Singly Linked List
 ===================================
-  (1) Create      (2) InsertFront
+  (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtIdx
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtIdx (8) Display
-  (9) Clear List  (0) Exit
+  (9) Clear       (10) Reverse
+  (0) Exit
 
 Enter Choice: 2
 
@@ -32,11 +34,12 @@ Press any to continue...
 
         Singly Linked List
 ===================================
-  (1) Create      (2) InsertFront
+  (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtIdx
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtIdx (8) Display
-  (9) Clear List  (0) Exit
+  (9) Clear       (10) Reverse
+  (0) Exit
 
 Enter Choice: 3
 
@@ -48,71 +51,173 @@ Press any to continue...
 
         Singly Linked List
 ===================================
-  (1) Create      (2) InsertFront
+  (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtIdx
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtIdx (8) Display
-  (9) Clear List  (0) Exit
+  (9) Clear       (10) Reverse
+  (0) Exit
 
-Enter Choice: 1
+Enter Choice: 3
 
 Enter Payload: T
-Created node T...
+Inserted T at back...
 List: D -> A -> R -> T
 
 Press any to continue...
 
         Singly Linked List
 ===================================
-  (1) Create      (2) InsertFront
+  (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtIdx
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtIdx (8) Display
-  (9) Clear List  (0) Exit
+  (9) Clear       (10) Reverse
+  (0) Exit
+
+Enter Choice: 1
+
+Enter Search Term: R
+Element R found...
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear       (10) Reverse
+  (0) Exit
+
+Enter Choice: 10
+
+List reversed...
+List: T -> R -> A -> D
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear       (10) Reverse
+  (0) Exit
 
 Enter Choice: 5
 
 Deleted node at front...
-List: A -> R -> T
+List: R -> A -> D
 
 Press any to continue...
 
         Singly Linked List
 ===================================
-  (1) Create      (2) InsertFront
+  (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtIdx
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtIdx (8) Display
-  (9) Clear List  (0) Exit
+  (9) Clear       (10) Reverse
+  (0) Exit
+
+Enter Choice: 1
+
+Enter Search Term: D
+Element D found...
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear       (10) Reverse
+  (0) Exit
+
+Enter Choice: 10
+
+List reversed...
+List: D -> A -> R
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear       (10) Reverse
+  (0) Exit
 
 Enter Choice: 6
 
 Deleted node at back...
-List: A -> R
+List: D -> A
 
 Press any to continue...
 
         Singly Linked List
 ===================================
-  (1) Create      (2) InsertFront
+  (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtIdx
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtIdx (8) Display
-  (9) Clear List  (0) Exit
+  (9) Clear       (10) Reverse
+  (0) Exit
 
-Enter Choice: 8
+Enter Choice: 10
 
-List: A -> R
+List reversed...
+List: A -> D
 
 Press any to continue...
 
         Singly Linked List
 ===================================
-  (1) Create      (2) InsertFront
+  (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtIdx
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtIdx (8) Display
-  (9) Clear List  (0) Exit
+  (9) Clear       (10) Reverse
+  (0) Exit
+
+Enter Choice: 6
+
+Deleted node at back...
+List: A
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear       (10) Reverse
+  (0) Exit
+
+Enter Choice: 1
+
+Enter Search Term: Q
+Element not found...
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear       (10) Reverse
+  (0) Exit
 
 Enter Choice: 9
 
@@ -122,11 +227,12 @@ Press any to continue...
 
         Singly Linked List
 ===================================
-  (1) Create      (2) InsertFront
+  (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtIdx
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtIdx (8) Display
-  (9) Clear List  (0) Exit
+  (9) Clear       (10) Reverse
+  (0) Exit
 
 Enter Choice: 5
 
@@ -136,24 +242,13 @@ Press any to continue...
 
         Singly Linked List
 ===================================
-  (1) Create      (2) InsertFront
+  (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtIdx
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtIdx (8) Display
-  (9) Clear List  (0) Exit
+  (9) Clear       (10) Reverse
+  (0) Exit
 
-Enter Choice: 8
-
-List is empty...
+Enter Choice: 0
 
 Press any to continue...
-
-Valgrind (Memory Leak Checker) Report:
-======================================
-==352== HEAP SUMMARY:
-==352==     in use at exit: 0 bytes in 0 blocks
-==352==   total heap usage: 7 allocs, 7 frees, 74,816 bytes allocated
-==352==
-==352== All heap blocks were freed -- no leaks are possible
-==352==
-==352== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -33,25 +33,6 @@ public:
     this->clear();
   }
 
-  void create()
-  {
-    T info;
-    struct Node *temp = new Node;
-    cout << "\nEnter Payload: ";
-    cin >> info;
-    temp->info = info;
-    temp->ptr = NULL;
-    if (head == NULL)
-      head = tail = temp;
-    else
-      tail->ptr = temp;
-    tail = temp;
-    cout << "Created node " << info
-         << "...";
-    this->display();
-    return;
-  };
-
   void insertFront()
   {
     T info;
@@ -60,9 +41,9 @@ public:
     cin >> info;
     temp->info = info;
     temp->ptr = head;
-    head = temp;
     if (head == NULL)
-      tail = head;
+      tail = temp;
+    head = temp;
     cout << "Inserted " << info
          << " at front...";
     this->display();
@@ -137,6 +118,50 @@ public:
     return;
   }
 
+  void reverse()
+  {
+    if (head == NULL || tail == NULL)
+    {
+      cout << "\nList is empty...\n";
+      return;
+    }
+    struct Node *temp = head,
+                *prev = NULL,
+                *next = NULL;
+    while (temp != NULL)
+    {
+      next = temp->ptr;
+      temp->ptr = prev;
+      prev = temp;
+      temp = next;
+    }
+    head = prev;
+    cout << "\nList reversed...";
+    this->display();
+    delete next, temp;
+    return;
+  }
+
+  void search()
+  {
+    T info;
+    cout << "\nEnter Search Term: ";
+    cin >> info;
+    struct Node *temp = head;
+    while (temp != NULL)
+    {
+      if (temp->info == info)
+      {
+        cout << "Element " << info
+             << " found...\n";
+        return;
+      }
+      temp = temp->ptr;
+    }
+    cout << "Element not found...\n";
+    return;
+  }
+
   void clear()
   {
     if (head == NULL)
@@ -182,17 +207,18 @@ int main(void)
   {
     cout << "\tSingly Linked List\n"
          << "===================================\n"
-         << "  (1) Create      (2) InsertFront\n"
+         << "  (1) Search      (2) InsertFront\n"
          << "  (3) InsertBack  (4) InsertAtIdx\n"
          << "  (5) DeleteFront (6) DeleteBack\n"
          << "  (7) DeleteAtIdx (8) Display\n"
-         << "  (9) Clear List  (0) Exit\n\n";
+         << "  (9) Clear       (10) Reverse\n"
+         << "  (0) Exit\n\n";
     cout << "Enter Choice: ";
     cin >> choice;
     switch (choice)
     {
     case 1:
-      list.create();
+      list.search();
       break;
     case 2:
       list.insertFront();
@@ -218,6 +244,9 @@ int main(void)
     case 9:
       list.clear();
       cout << "\nList cleared...\n";
+      break;
+    case 10:
+      list.reverse();
       break;
     case 0:
     default:
