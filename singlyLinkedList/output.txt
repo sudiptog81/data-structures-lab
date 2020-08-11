@@ -1,0 +1,159 @@
+        Singly Linked List
+===================================
+  (1) Create      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear List  (0) Exit
+
+Enter Choice: 1
+
+Enter Payload: A
+Created node A...
+List: A
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Create      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear List  (0) Exit
+
+Enter Choice: 2
+
+Enter Payload: D
+Inserted D at front...
+List: D -> A
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Create      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear List  (0) Exit
+
+Enter Choice: 3
+
+Enter Payload: R
+Inserted R at back...
+List: D -> A -> R
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Create      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear List  (0) Exit
+
+Enter Choice: 1
+
+Enter Payload: T
+Created node T...
+List: D -> A -> R -> T
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Create      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear List  (0) Exit
+
+Enter Choice: 5
+
+Deleted node at front...
+List: A -> R -> T
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Create      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear List  (0) Exit
+
+Enter Choice: 6
+
+Deleted node at back...
+List: A -> R
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Create      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear List  (0) Exit
+
+Enter Choice: 8
+
+List: A -> R
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Create      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear List  (0) Exit
+
+Enter Choice: 9
+
+List cleared...
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Create      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear List  (0) Exit
+
+Enter Choice: 5
+
+List is empty...
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Create      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear List  (0) Exit
+
+Enter Choice: 8
+
+List is empty...
+
+Press any to continue...
+
+Valgrind (Memory Leak Checker) Report:
+======================================
+==352== HEAP SUMMARY:
+==352==     in use at exit: 0 bytes in 0 blocks
+==352==   total heap usage: 7 allocs, 7 frees, 74,816 bytes allocated
+==352==
+==352== All heap blocks were freed -- no leaks are possible
+==352==
+==352== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
