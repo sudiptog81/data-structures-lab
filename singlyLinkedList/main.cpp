@@ -143,7 +143,6 @@ public:
         return;
       }
       node = temp->ptr->ptr;
-      delete temp->ptr;
       temp->ptr = node;
     }
     cout << "Deleted node "
@@ -228,10 +227,8 @@ public:
     while (temp->ptr != NULL)
     {
       ptr = temp->ptr;
-      delete temp;
       temp = ptr;
     }
-    delete temp;
     head = tail = NULL;
     return;
   }
