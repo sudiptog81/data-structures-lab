@@ -219,6 +219,41 @@ Press any to continue...
   (9) Clear       (10) Reverse
   (0) Exit
 
+Enter Choice: 4
+
+Enter Index: 1
+Enter Payload: M
+Inserted node M at index 1...
+List: A -> M
+
+Press any to continue..
+
+        Singly Linked List
+===================================
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear       (10) Reverse
+  (0) Exit
+
+Enter Choice: 7
+
+Enter Index: 0
+Deleted node at index 0...
+List: M
+
+Press any to continue...
+
+        Singly Linked List
+===================================
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtIdx
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtIdx (8) Display
+  (9) Clear       (10) Reverse
+  (0) Exit
+
 Enter Choice: 9
 
 List cleared...

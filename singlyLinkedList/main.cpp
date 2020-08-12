@@ -36,9 +36,9 @@ public:
   void insertFront()
   {
     T info;
-    struct Node *temp = new Node;
     cout << "\nEnter Payload: ";
     cin >> info;
+    struct Node *temp = new Node;
     temp->info = info;
     temp->ptr = head;
     if (head == NULL)
@@ -50,18 +50,45 @@ public:
     return;
   }
 
-  // TODO
-  void insertAtIdx(int idx, T info)
+  void insertAtIdx(int idx)
   {
+    T info;
+    cout << "Enter Payload: ";
+    cin >> info;
+    struct Node *temp = head,
+                *node = new Node;
+    node->info = info;
+    if (idx == 0)
+    {
+      if (head == NULL)
+      {
+        node->ptr = NULL;
+        tail = node;
+      }
+      else
+        node->ptr = head;
+      head = node;
+    }
+    else
+    {
+      for (int i = 0; temp != NULL && i < idx - 2; i++)
+        temp = temp->ptr;
+      node->ptr = temp->ptr;
+      temp->ptr = node;
+    }
+    cout << "Inserted node " << info
+         << " at index " << idx
+         << "...";
+    this->display();
     return;
   }
 
   void insertBack()
   {
     T info;
-    struct Node *temp = new Node;
     cout << "\nEnter Payload: ";
     cin >> info;
+    struct Node *temp = new Node;
     temp->info = info;
     temp->ptr = NULL;
     if (head == NULL)
@@ -90,9 +117,39 @@ public:
     return;
   }
 
-  // TODO
   void deleteAtIdx(int idx)
   {
+    if (head == NULL || tail == NULL)
+    {
+      cout << "\nList is empty...\n";
+      return;
+    }
+    struct Node *node, *temp = head;
+    if (idx == 0)
+    {
+      head = head->ptr;
+      if (head == NULL)
+        tail = NULL;
+    }
+    else
+    {
+      for (int i = 0; temp != NULL && i < idx - 1; i++)
+      {
+        temp = temp->ptr;
+      }
+      if (temp == NULL || temp->ptr == NULL)
+      {
+        cout << "Invalid Index...\n";
+        return;
+      }
+      node = temp->ptr->ptr;
+      delete temp->ptr;
+      temp->ptr = node;
+    }
+    cout << "Deleted node "
+         << "at index " << idx
+         << "...";
+    this->display();
     return;
   }
 
@@ -200,8 +257,8 @@ public:
 
 int main(void)
 {
-  int choice;
   char payload;
+  int choice, idx;
   SinglyLinkedList<char> list;
   do
   {
@@ -227,7 +284,9 @@ int main(void)
       list.insertBack();
       break;
     case 4:
-      // TODO
+      cout << "\nEnter Index: ";
+      cin >> idx;
+      list.insertAtIdx(idx);
       break;
     case 5:
       list.deleteFront();
@@ -236,7 +295,9 @@ int main(void)
       list.deleteBack();
       break;
     case 7:
-      // TODO
+      cout << "\nEnter Index: ";
+      cin >> idx;
+      list.deleteAtIdx(idx);
       break;
     case 8:
       list.display();
