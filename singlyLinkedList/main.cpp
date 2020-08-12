@@ -185,6 +185,7 @@ public:
     struct Node *temp = head,
                 *prev = NULL,
                 *next = NULL;
+    tail = temp;
     while (temp != NULL)
     {
       next = temp->ptr;
@@ -195,7 +196,6 @@ public:
     head = prev;
     cout << "\nList reversed...";
     this->display();
-    delete next, temp;
     return;
   }
 
