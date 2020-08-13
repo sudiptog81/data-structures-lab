@@ -71,8 +71,13 @@ public:
     }
     else
     {
-      for (int i = 0; temp != NULL && i < idx - 2; i++)
+      for (int i = 0; temp != NULL && i < idx - 1; i++)
         temp = temp->ptr;
+      if (temp == NULL)
+      {
+        cout << "Invalid Index...\n";
+        return;
+      }
       node->ptr = temp->ptr;
       temp->ptr = node;
     }
@@ -134,15 +139,14 @@ public:
     else
     {
       for (int i = 0; temp != NULL && i < idx - 1; i++)
-      {
         temp = temp->ptr;
-      }
       if (temp == NULL || temp->ptr == NULL)
       {
         cout << "Invalid Index...\n";
         return;
       }
       node = temp->ptr->ptr;
+      delete temp->ptr;
       temp->ptr = node;
     }
     cout << "Deleted node "
