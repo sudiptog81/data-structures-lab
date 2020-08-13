@@ -231,6 +231,7 @@ public:
     while (temp->ptr != NULL)
     {
       ptr = temp->ptr;
+      delete temp->ptr;
       temp = ptr;
     }
     head = tail = NULL;
