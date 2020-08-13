@@ -1,6 +1,6 @@
 /**
- *  Implementation of a Singly Linked List 
- *  
+ *  Implementation of a Singly Linked List
+ *
  *  Written by Sudipto Ghosh for the University of Delhi
  */
 
@@ -30,70 +30,69 @@ public:
 
   ~SinglyLinkedList()
   {
-    this->clear();
+    if (head == NULL || tail == NULL)
+      return;
+    struct Node *ptr, *temp = head;
+    while (temp != NULL)
+    {
+      ptr = temp->ptr;
+      delete temp;
+      temp = ptr;
+    }
+    head = tail = NULL;
+    return;
   }
 
-  void insertFront()
+  bool isEmpty()
   {
-    T info;
-    cout << "\nEnter Payload: ";
-    cin >> info;
-    struct Node *temp = new Node;
+    if (head == NULL || tail == NULL)
+    {
+      cout << "\nList is empty...\n";
+      return true;
+    }
+    return false;
+  }
+
+  void insertFront(T info)
+  {
+    struct Node *temp = new Node();
     temp->info = info;
     temp->ptr = head;
     if (head == NULL)
       tail = temp;
     head = temp;
-    cout << "Inserted " << info
-         << " at front...";
+    cout << "Inserted " << info << " at front...";
     this->display();
     return;
   }
 
-  void insertAtIdx(int idx)
+  void insertAtLoc(int loc, T info)
   {
-    T info;
-    cout << "Enter Payload: ";
-    cin >> info;
-    struct Node *temp = head,
-                *node = new Node;
+    if (loc == 1)
+    {
+      this->insertFront(info);
+      return;
+    }
+    struct Node *temp = head;
+    for (int i = 1; temp != NULL && i < loc - 1; i++)
+      temp = temp->ptr;
+    if (temp == NULL)
+    {
+      cout << "Invalid location...\n";
+      return;
+    }
+    struct Node *node = new Node();
     node->info = info;
-    if (idx == 0)
-    {
-      if (head == NULL)
-      {
-        node->ptr = NULL;
-        tail = node;
-      }
-      else
-        node->ptr = head;
-      head = node;
-    }
-    else
-    {
-      for (int i = 0; temp != NULL && i < idx - 1; i++)
-        temp = temp->ptr;
-      if (temp == NULL)
-      {
-        cout << "Invalid Index...\n";
-        return;
-      }
-      node->ptr = temp->ptr;
-      temp->ptr = node;
-    }
-    cout << "Inserted node " << info
-         << " at index " << idx
-         << "...";
+    node->ptr = temp->ptr;
+    temp->ptr = node;
+    cout << "Inserted node " << info << " at location " << loc << "...";
     this->display();
     return;
   }
 
-  void insertBack()
+  void insertBack(T info)
   {
-    T info;
-    cout << "\nEnter Payload: ";
-    cin >> info;
-    struct Node *temp = new Node;
+    struct Node *temp = new Node();
     temp->info = info;
     temp->ptr = NULL;
     if (head == NULL)
@@ -101,20 +100,18 @@ public:
     else
       tail->ptr = temp;
     tail = temp;
-    cout << "Inserted " << info
-         << " at back...";
+    cout << "Inserted " << info << " at back...";
     this->display();
     return;
   }
 
   void deleteFront()
   {
-    if (head == NULL || tail == NULL)
-    {
-      cout << "\nList is empty...\n";
+    if (this->isEmpty())
       return;
-    }
-    head = head->ptr;
+    struct Node *temp = head;
+    head = temp->ptr;
+    delete temp;
     if (head == NULL)
       tail = NULL;
     cout << "\nDeleted node at front...";
@@ -122,47 +119,36 @@ public:
     return;
   }
 
-  void deleteAtIdx(int idx)
+  void deleteAtLoc(int loc)
   {
-    if (head == NULL || tail == NULL)
+    if (this->isEmpty())
+      return;
+    struct Node *node, *temp = head;
+    if (loc == 1 || head == tail)
     {
-      cout << "\nList is empty...\n";
+      this->deleteFront();
       return;
     }
-    struct Node *node, *temp = head;
-    if (idx == 0)
+    for (int i = 1; temp != NULL && i < loc - 1; i++)
+      temp = temp->ptr;
+    if (temp == NULL || temp->ptr == NULL)
     {
-      head = head->ptr;
-      if (head == NULL)
-        tail = NULL;
+      cout << "Invalid location...\n";
+      return;
     }
-    else
-    {
-      for (int i = 0; temp != NULL && i < idx - 1; i++)
-        temp = temp->ptr;
-      if (temp == NULL || temp->ptr == NULL)
-      {
-        cout << "Invalid Index...\n";
-        return;
-      }
-      node = temp->ptr->ptr;
-      delete temp->ptr;
-      temp->ptr = node;
-    }
+    node = temp->ptr->ptr;
+    delete temp->ptr;
+    temp->ptr = node;
     cout << "Deleted node "
-         << "at index " << idx
-         << "...";
+         << "at location " << loc << "...";
     this->display();
     return;
   }
 
   void deleteBack()
   {
-    if (head == NULL || tail == NULL)
-    {
-      cout << "\nList is empty...\n";
+    if (this->isEmpty())
       return;
-    }
     if (head == tail)
       head = tail = NULL;
     else
@@ -170,6 +156,7 @@ public:
       struct Node *temp = head;
       while (temp->ptr->ptr != NULL)
         temp = temp->ptr;
+      delete temp->ptr;
       temp->ptr = NULL;
       tail = temp;
     }
@@ -180,14 +167,9 @@ public:
 
   void reverse()
   {
-    if (head == NULL || tail == NULL)
-    {
-      cout << "\nList is empty...\n";
+    if (this->isEmpty())
       return;
-    }
-    struct Node *temp = head,
-                *prev = NULL,
-                *next = NULL;
+    struct Node *temp = head, *prev = NULL, *next = NULL;
     tail = temp;
     while (temp != NULL)
     {
@@ -202,18 +184,16 @@ public:
     return;
   }
 
-  void search()
+  void search(T ele)
   {
-    T info;
-    cout << "\nEnter Search Term: ";
-    cin >> info;
+    if (this->isEmpty())
+      return;
     struct Node *temp = head;
     while (temp != NULL)
     {
-      if (temp->info == info)
+      if (temp->info == ele)
       {
-        cout << "Element " << info
-             << " found...\n";
+        cout << "Element " << ele << " found...\n";
         return;
       }
       temp = temp->ptr;
@@ -222,20 +202,14 @@ public:
     return;
   }
 
-  void clear()
+  int count()
   {
-    if (head == NULL)
-      return;
-    struct Node *ptr = NULL,
-                *temp = head;
-    while (temp->ptr != NULL)
-    {
-      ptr = temp->ptr;
-      delete temp->ptr;
-      temp = ptr;
-    }
-    head = tail = NULL;
-    return;
+    if (this->isEmpty())
+      return -1;
+    int count = 0;
+    for (struct Node *temp = head; temp != NULL; temp = temp->ptr, count++)
+      ;
+    return count;
   }
 
   void display()
@@ -259,36 +233,43 @@ public:
 
 int main(void)
 {
-  char payload;
-  int choice, idx;
-  SinglyLinkedList<char> list;
+  int info, ele, choice, loc, count;
+  SinglyLinkedList<int> list;
   do
   {
     cout << "\tSingly Linked List\n"
          << "===================================\n"
          << "  (1) Search      (2) InsertFront\n"
-         << "  (3) InsertBack  (4) InsertAtIdx\n"
+         << "  (3) InsertBack  (4) InsertAtLoc\n"
          << "  (5) DeleteFront (6) DeleteBack\n"
          << "  (7) DeleteAtIdx (8) Display\n"
-         << "  (9) Clear       (10) Reverse\n"
+         << "  (9) Count       (10) Reverse\n"
          << "  (0) Exit\n\n";
     cout << "Enter Choice: ";
     cin >> choice;
     switch (choice)
     {
     case 1:
-      list.search();
+      cout << "\nEnter Search Element: ";
+      cin >> ele;
+      list.search(ele);
       break;
     case 2:
-      list.insertFront();
+      cout << "\nEnter Payload: ";
+      cin >> info;
+      list.insertFront(info);
       break;
     case 3:
-      list.insertBack();
+      cout << "\nEnter Payload: ";
+      cin >> info;
+      list.insertBack(info);
       break;
     case 4:
-      cout << "\nEnter Index: ";
-      cin >> idx;
-      list.insertAtIdx(idx);
+      cout << "\nEnter Location: ";
+      cin >> loc;
+      cout << "Enter Payload: ";
+      cin >> info;
+      list.insertAtLoc(loc, info);
       break;
     case 5:
       list.deleteFront();
@@ -297,16 +278,17 @@ int main(void)
       list.deleteBack();
       break;
     case 7:
-      cout << "\nEnter Index: ";
-      cin >> idx;
-      list.deleteAtIdx(idx);
+      cout << "\nEnter Location: ";
+      cin >> loc;
+      list.deleteAtLoc(loc);
       break;
     case 8:
       list.display();
       break;
     case 9:
-      list.clear();
-      cout << "\nList cleared...\n";
+      count = list.count();
+      if (count != -1)
+        cout << "\nNumber of Nodes: " << count << endl;
       break;
     case 10:
       list.reverse();
@@ -323,7 +305,7 @@ int main(void)
 
 void getch()
 {
-  cout << "\nPress any to continue...";
+  cout << "\nPress any key to continue...";
   cin.ignore();
   cin.get();
   return;
