@@ -1,10 +1,10 @@
-        Singly Linked List
+    Doubly Linked List
 ===================================
-  (1) Search      (2) InsertFront  
-  (3) InsertBack  (4) InsertAtLoc  
-  (5) DeleteFront (6) DeleteBack   
-  (7) DeleteAtLoc (8) Display      
-  (9) Count       (10) Reverse     
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtLoc
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtLoc (8) Display
+  (9) Count       (10) Reverse
   (0) Exit
 
 Enter Choice: 2
@@ -15,24 +15,24 @@ List: 10
 
 Press any key to continue...
 
-        Singly Linked List
+    Doubly Linked List
 ===================================
-  (1) Search      (2) InsertFront  
-  (3) InsertBack  (4) InsertAtLoc  
-  (5) DeleteFront (6) DeleteBack   
-  (7) DeleteAtLoc (8) Display      
-  (9) Count       (10) Reverse     
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtLoc
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtLoc (8) Display
+  (9) Count       (10) Reverse
   (0) Exit
 
 Enter Choice: 3
 
 Enter Payload: 30
-Inserted 30 at back...      
+Inserted 30 at back...
 List: 10 -> 30
 
 Press any key to continue...
 
-        Singly Linked List
+    Doubly Linked List
 ===================================
   (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtLoc
@@ -43,46 +43,14 @@ Press any key to continue...
 
 Enter Choice: 4
 
-Enter Location: 2 
+Enter Location: 2
 Enter Payload: 20
 Inserted node 20 at location 2...
 List: 10 -> 20 -> 30
 
 Press any key to continue...
 
-        Singly Linked List
-===================================
-  (1) Search      (2) InsertFront
-  (3) InsertBack  (4) InsertAtLoc
-  (5) DeleteFront (6) DeleteBack
-  (7) DeleteAtLoc (8) Display
-  (9) Count       (10) Reverse
-  (0) Exit
-
-Enter Choice: 4
-
-Enter Location: 5
-Enter Payload: 50
-Invalid location...
-
-Press any key to continue..
-
-        Singly Linked List
-===================================
-  (1) Search      (2) InsertFront
-  (3) InsertBack  (4) InsertAtLoc
-  (5) DeleteFront (6) DeleteBack
-  (7) DeleteAtLoc (8) Display
-  (9) Count       (10) Reverse
-  (0) Exit
-
-Enter Choice: 8 
-
-List: 10 -> 20 -> 30        
-
-Press any key to continue..
-
-        Singly Linked List
+    Doubly Linked List
 ===================================
   (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtLoc
@@ -97,23 +65,23 @@ Number of Nodes: 3
 
 Press any key to continue...
 
-        Singly Linked List
+    Doubly Linked List
 ===================================
-  (1) Search      (2) InsertFront  
-  (3) InsertBack  (4) InsertAtLoc  
-  (5) DeleteFront (6) DeleteBack   
-  (7) DeleteAtLoc (8) Display      
-  (9) Count       (10) Reverse     
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtLoc
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtLoc (8) Display
+  (9) Count       (10) Reverse
   (0) Exit
 
 Enter Choice: 10
 
 List reversed...
-List: 30 -> 20 -> 10        
+List: 30 -> 20 -> 10
 
 Press any key to continue...
 
-        Singly Linked List
+    Doubly Linked List
 ===================================
   (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtLoc
@@ -124,12 +92,29 @@ Press any key to continue...
 
 Enter Choice: 6
 
-Deleted node at back...     
+Deleted node at back...
 List: 30 -> 20
 
 Press any key to continue...
 
-        Singly Linked List
+    Doubly Linked List
+===================================
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtLoc
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtLoc (8) Display
+  (9) Count       (10) Reverse
+  (0) Exit
+
+Enter Choice: 3
+
+Enter Payload: 2 
+Inserted 2 at back...
+List: 30 -> 20 -> 2
+
+Press any key to continue...
+
+    Doubly Linked List
 ===================================
   (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtLoc
@@ -142,11 +127,11 @@ Enter Choice: 7
 
 Enter Location: 2
 Deleted node at location 2...
-List: 30
+List: 30 -> 2
 
 Press any key to continue...
 
-        Singly Linked List
+    Doubly Linked List
 ===================================
   (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtLoc
@@ -157,12 +142,12 @@ Press any key to continue...
 
 Enter Choice: 5
 
-Deleted node at front...    
-List is empty...
+Deleted node at front...
+List: 2
 
 Press any key to continue...
 
-        Singly Linked List
+    Doubly Linked List
 ===================================
   (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtLoc
@@ -171,15 +156,30 @@ Press any key to continue...
   (9) Count       (10) Reverse
   (0) Exit
 
-Enter Choice: 7
+Enter Choice: 1
 
-Enter Location: 10
-
-List is empty...
+Enter Search Element: 2
+Element 2 found...
 
 Press any key to continue...
 
-        Singly Linked List
+    Doubly Linked List
+===================================
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtLoc
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtLoc (8) Display
+  (9) Count       (10) Reverse
+  (0) Exit
+
+Enter Choice: 1
+
+Enter Search Element: 3
+Element not found...
+
+Press any key to continue...
+
+    Doubly Linked List
 ===================================
   (1) Search      (2) InsertFront
   (3) InsertBack  (4) InsertAtLoc
@@ -192,8 +192,8 @@ Enter Choice: 0
 
 Press any key to continue...
 
-==446== HEAP SUMMARY:
-==446==     in use at exit: 0 bytes in 0 blocks
-==446==   total heap usage: 7 allocs, 7 frees, 74,816 bytes allocated 
-==446==
-==446== All heap blocks were freed -- no leaks are possible
+==137== HEAP SUMMARY:
+==137==     in use at exit: 0 bytes in 0 blocks
+==137==   total heap usage: 8 allocs, 8 frees, 74,872 bytes allocated
+==137== 
+==137== All heap blocks were freed -- no leaks are possible

@@ -1,5 +1,5 @@
 /**
- *  Implementation of a Singly Linked List
+ *  Implementation of a Doubly Linked List
  *
  *  Written by Sudipto Ghosh for the University of Delhi
  */
@@ -12,30 +12,31 @@ void getch();
 void clrscr();
 
 template <typename T>
-class SinglyLinkedList
+class DoublyLinkedList
 {
 protected:
   struct Node
   {
     T info;
-    Node *ptr;
+    Node *prev;
+    Node *next;
   };
   struct Node *head, *tail;
 
 public:
-  SinglyLinkedList()
+  DoublyLinkedList()
   {
     head = tail = NULL;
   }
 
-  ~SinglyLinkedList()
+  ~DoublyLinkedList()
   {
     if (this->isEmpty())
       return;
     struct Node *ptr, *temp = head;
     while (temp != NULL)
     {
-      ptr = temp->ptr;
+      ptr = temp->next;
       delete temp;
       temp = ptr;
     }
@@ -52,9 +53,12 @@ public:
   {
     struct Node *temp = new Node();
     temp->info = info;
-    temp->ptr = head;
+    temp->next = head;
+    temp->prev = NULL;
     if (this->isEmpty())
       tail = temp;
+    else
+      head->prev = temp;
     head = temp;
     cout << "Inserted " << info << " at front...";
     this->display();
@@ -70,7 +74,7 @@ public:
     }
     struct Node *temp = head;
     for (int i = 1; temp != NULL && i < loc - 1; i++)
-      temp = temp->ptr;
+      temp = temp->next;
     if (temp == NULL)
     {
       cout << "Invalid location...\n";
@@ -83,8 +87,12 @@ public:
     }
     struct Node *node = new Node();
     node->info = info;
-    node->ptr = temp->ptr;
-    temp->ptr = node;
+    node->next = temp->next;
+    node->prev = temp;
+    temp->next->prev = node;
+    temp->next = node;
+    if (temp == tail)
+      tail = node;
     cout << "Inserted node " << info << " at location " << loc << "...";
     this->display();
     return;
@@ -94,11 +102,12 @@ public:
   {
     struct Node *temp = new Node();
     temp->info = info;
-    temp->ptr = NULL;
+    temp->next = NULL;
+    temp->prev = tail;
     if (this->isEmpty())
       head = tail = temp;
     else
-      tail->ptr = temp;
+      tail->next = temp;
     tail = temp;
     cout << "Inserted " << info << " at back...";
     this->display();
@@ -113,10 +122,12 @@ public:
       return;
     }
     struct Node *temp = head;
-    head = temp->ptr;
-    delete temp;
+    head = temp->next;
     if (this->isEmpty())
       tail = NULL;
+    else
+      head->prev = NULL;
+    delete temp;
     cout << "\nDeleted node at front...";
     this->display();
     return;
@@ -136,20 +147,21 @@ public:
       return;
     }
     for (int i = 1; temp != NULL && i < loc - 1; i++)
-      temp = temp->ptr;
-    if (temp == NULL || temp->ptr == NULL)
+      temp = temp->next;
+    if (temp == NULL || temp->next == NULL)
     {
       cout << "Invalid location...\n";
       return;
     }
-    if (temp == tail)
+    if (temp->next == tail)
     {
       this->deleteBack();
       return;
     }
-    node = temp->ptr->ptr;
-    delete temp->ptr;
-    temp->ptr = node;
+    node = temp->next->next;
+    node->prev = temp;
+    delete temp->next;
+    temp->next = node;
     cout << "Deleted node "
          << "at location " << loc << "...";
     this->display();
@@ -163,17 +175,13 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    if (head == tail)
-      head = tail = NULL;
+    struct Node *temp = tail;
+    tail = temp->prev;
+    if (this->isEmpty())
+      head = NULL;
     else
-    {
-      struct Node *temp = head;
-      while (temp->ptr->ptr != NULL)
-        temp = temp->ptr;
-      delete temp->ptr;
-      temp->ptr = NULL;
-      tail = temp;
-    }
+      tail->next = NULL;
+    delete temp;
     cout << "\nDeleted node at back...";
     this->display();
     return;
@@ -187,17 +195,17 @@ public:
       return;
     }
     struct Node *temp = head,
-                *prev = NULL,
-                *next = NULL;
+                *temp1 = NULL;
     tail = temp;
     while (temp != NULL)
     {
-      next = temp->ptr;
-      temp->ptr = prev;
-      prev = temp;
-      temp = next;
+      temp1 = temp->prev;
+      temp->prev = temp->next;
+      temp->next = temp1;
+      temp = temp->prev;
     }
-    head = prev;
+    if (temp1 != NULL)
+      head = temp1->prev;
     cout << "\nList reversed...";
     this->display();
     return;
@@ -218,7 +226,7 @@ public:
         cout << "Element " << ele << " found...\n";
         return;
       }
-      temp = temp->ptr;
+      temp = temp->next;
     }
     cout << "Element not found...\n";
     return;
@@ -234,7 +242,7 @@ public:
     int count = 0;
     struct Node *temp;
     for (temp = head; temp != NULL;
-         temp = temp->ptr, count++)
+         temp = temp->next, count++)
       ;
     return count;
   }
@@ -248,10 +256,10 @@ public:
     }
     struct Node *temp = head;
     cout << "\nList: ";
-    while (temp->ptr != NULL)
+    while (temp->next != NULL)
     {
       cout << temp->info << " -> ";
-      temp = temp->ptr;
+      temp = temp->next;
     }
     cout << temp->info << endl;
     return;
@@ -261,10 +269,10 @@ public:
 int main(void)
 {
   int info, ele, choice, loc, count;
-  SinglyLinkedList<int> list;
+  DoublyLinkedList<int> list;
   do
   {
-    cout << "\tSingly Linked List\n"
+    cout << "\tDoubly Linked List\n"
          << "===================================\n"
          << "  (1) Search      (2) InsertFront\n"
          << "  (3) InsertBack  (4) InsertAtLoc\n"
