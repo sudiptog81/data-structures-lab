@@ -187,30 +187,6 @@ public:
     return;
   }
 
-  void reverse()
-  {
-    if (this->isEmpty())
-    {
-      cout << "\nList is empty...\n";
-      return;
-    }
-    struct Node *temp = head,
-                *temp1 = NULL;
-    tail = temp;
-    while (temp != NULL)
-    {
-      temp1 = temp->prev;
-      temp->prev = temp->next;
-      temp->next = temp1;
-      temp = temp->prev;
-    }
-    if (temp1 != NULL)
-      head = temp1->prev;
-    cout << "\nList reversed...";
-    this->display();
-    return;
-  }
-
   void search(T ele)
   {
     if (this->isEmpty())
@@ -278,8 +254,7 @@ int main(void)
          << "  (3) InsertBack  (4) InsertAtLoc\n"
          << "  (5) DeleteFront (6) DeleteBack\n"
          << "  (7) DeleteAtLoc (8) Display\n"
-         << "  (9) Count       (10) Reverse\n"
-         << "  (0) Exit\n\n";
+         << "  (9) Count       (0) Exit\n\n";
     cout << "Enter Choice: ";
     cin >> choice;
     switch (choice)
@@ -324,9 +299,6 @@ int main(void)
       count = list.count();
       if (count != -1)
         cout << "\nNumber of Nodes: " << count << endl;
-      break;
-    case 10:
-      list.reverse();
       break;
     case 0:
     default:
