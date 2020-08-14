@@ -91,8 +91,6 @@ public:
     node->prev = temp;
     temp->next->prev = node;
     temp->next = node;
-    if (temp == tail)
-      tail = node;
     cout << "Inserted node " << info << " at location " << loc << "...";
     this->display();
     return;
