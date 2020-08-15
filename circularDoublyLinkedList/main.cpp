@@ -50,10 +50,6 @@ public:
     return tail == NULL;
   }
 
-  void insertEmpty(T info)
-  {
-  }
-
   void insertFront(T info)
   {
     struct Node *temp = new Node();
