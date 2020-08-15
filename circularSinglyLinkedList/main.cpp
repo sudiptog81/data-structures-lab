@@ -33,12 +33,13 @@ public:
     if (this->isEmpty())
       return;
     struct Node *ptr, *temp = tail->ptr;
-    do
+    while (temp->ptr != tail)
     {
-      ptr = temp->ptr;
-      delete temp;
-      temp = ptr;
-    } while (temp != tail->ptr);
+      ptr = temp;
+      temp = ptr->ptr;
+      delete ptr;
+    }
+    delete temp;
     tail = NULL;
     return;
   }

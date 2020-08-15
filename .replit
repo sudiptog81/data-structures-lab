@@ -1,0 +1,2 @@
+language = "bash"
+run = "chmod +x test.sh && ./test.sh"
