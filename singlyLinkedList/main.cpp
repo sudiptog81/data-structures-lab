@@ -129,12 +129,12 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    struct Node *node, *temp = head;
     if (loc == 1)
     {
       this->deleteFront();
       return;
     }
+    struct Node *node, *temp = head;
     for (int i = 1; temp != NULL && i < loc - 1; i++)
       temp = temp->ptr;
     if (temp == NULL || temp->ptr == NULL)

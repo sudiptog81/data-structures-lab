@@ -1,5 +1,5 @@
 /**
- *  Implementation of a Circular Singly Linked List
+ *  Implementation of a Circular Doubly Linked List
  *
  *  Written by Sudipto Ghosh for the University of Delhi
  */
@@ -12,33 +12,35 @@ void getch();
 void clrscr();
 
 template <typename T>
-class CircularSinglyLinkedList
+class CircularDoublyLinkedList
 {
 protected:
   struct Node
   {
     T info;
-    Node *ptr;
+    Node *prev;
+    Node *next;
   };
   struct Node *tail;
 
 public:
-  CircularSinglyLinkedList()
+  CircularDoublyLinkedList()
   {
     tail = NULL;
   }
 
-  ~CircularSinglyLinkedList()
+  ~CircularDoublyLinkedList()
   {
     if (this->isEmpty())
       return;
-    struct Node *ptr, *temp = tail->ptr;
-    do
+    struct Node *ptr, *temp = tail->next;
+    while (temp->next != tail)
     {
-      ptr = temp->ptr;
-      delete temp;
-      temp = ptr;
-    } while (temp != tail->ptr);
+      ptr = temp;
+      temp = ptr->next;
+      delete ptr;
+    }
+    delete temp;
     tail = NULL;
     return;
   }
@@ -48,19 +50,26 @@ public:
     return tail == NULL;
   }
 
+  void insertEmpty(T info)
+  {
+  }
+
   void insertFront(T info)
   {
     struct Node *temp = new Node();
     temp->info = info;
     if (this->isEmpty())
     {
-      temp->ptr = temp;
+      temp->next = temp;
+      temp->prev = temp;
       tail = temp;
     }
     else
     {
-      temp->ptr = tail->ptr;
-      tail->ptr = temp;
+      temp->prev = tail;
+      temp->next = tail->next;
+      tail->next->prev = temp;
+      tail->next = temp;
     }
     cout << "Inserted " << info << " at front...";
     this->display();
@@ -85,13 +94,15 @@ public:
       this->insertBack(info);
       return;
     }
-    struct Node *temp = tail->ptr;
-    for (int i = 1; temp->ptr != tail && i < loc - 1; i++)
-      temp = temp->ptr;
+    struct Node *temp = tail->next;
+    for (int i = 1; temp->next != tail && i < loc - 1; i++)
+      temp = temp->next;
     struct Node *node = new Node();
     node->info = info;
-    node->ptr = temp->ptr;
-    temp->ptr = node;
+    node->next = temp->next;
+    temp->next->prev = node;
+    node->prev = temp;
+    temp->next = node;
     cout << "Inserted node " << info << " at location " << loc << "...";
     this->display();
     return;
@@ -102,11 +113,18 @@ public:
     struct Node *temp = new Node();
     temp->info = info;
     if (this->isEmpty())
-      temp->ptr = temp;
+    {
+      temp->next = temp;
+      temp->prev = temp;
+    }
     else
     {
-      temp->ptr = tail->ptr;
-      tail->ptr = temp;
+      if (tail->prev == tail)
+        tail->prev = temp;
+      temp->next = tail->next;
+      temp->prev = tail;
+      tail->next = temp;
+      tail->next->prev = temp;
     }
     tail = temp;
     cout << "Inserted " << info << " at back...";
@@ -121,17 +139,17 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    else if (tail->ptr == tail)
+    if (tail->next == tail)
     {
       delete tail;
       tail = NULL;
     }
     else
     {
-      struct Node *temp;
-      temp = tail->ptr->ptr;
-      delete tail->ptr;
-      tail->ptr = temp;
+      struct Node *temp = tail->next;
+      tail->next = temp->next;
+      temp->next->prev = tail;
+      delete temp;
     }
     cout << "\nDeleted node at front...";
     this->display();
@@ -156,12 +174,12 @@ public:
       this->deleteBack();
       return;
     }
-    struct Node *node, *temp = tail->ptr;
-    for (int i = 1; temp->ptr != tail && i < loc - 1; i++)
-      temp = temp->ptr;
-    node = temp->ptr->ptr;
-    delete temp->ptr;
-    temp->ptr = node;
+    struct Node *temp = tail->next;
+    for (int i = 1; temp->next != tail && i < loc; i++)
+      temp = temp->next;
+    temp->prev->next = temp->next;
+    temp->next->prev = temp->prev;
+    delete temp;
     cout << "Deleted node "
          << "at location " << loc << "...";
     this->display();
@@ -175,44 +193,19 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    else if (tail->ptr == tail)
+    if (tail->next == tail)
     {
       delete tail;
       tail = NULL;
     }
     else
     {
-      struct Node *temp = tail->ptr;
-      while (temp->ptr != tail)
-        temp = temp->ptr;
-      temp->ptr = tail->ptr;
-      delete tail;
-      tail = temp;
+      struct Node *temp = tail;
+      tail = temp->prev;
+      tail->next = temp->next;
+      delete temp;
     }
     cout << "\nDeleted node at back...";
-    this->display();
-    return;
-  }
-
-  void reverse()
-  {
-    if (this->isEmpty())
-    {
-      cout << "\nList is empty...\n";
-      return;
-    }
-    struct Node *temp = tail->ptr,
-                *prev = NULL,
-                *next = NULL;
-    while (temp != NULL)
-    {
-      next = temp->ptr;
-      temp->ptr = prev;
-      prev = temp;
-      temp = next;
-    }
-    tail = prev;
-    cout << "\nList reversed...";
     this->display();
     return;
   }
@@ -224,7 +217,7 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    struct Node *temp = tail->ptr;
+    struct Node *temp = tail->next;
     do
     {
       if (temp->info == ele)
@@ -232,8 +225,8 @@ public:
         cout << "Element " << ele << " found...\n";
         return;
       }
-      temp = temp->ptr;
-    } while (temp != tail->ptr);
+      temp = temp->next;
+    } while (temp != tail->next);
     cout << "Element not found...\n";
     return;
   }
@@ -246,12 +239,12 @@ public:
       return -1;
     }
     int count = 0;
-    struct Node *temp = tail->ptr;
+    struct Node *temp = tail->next;
     do
     {
-      temp = temp->ptr;
+      temp = temp->next;
       count++;
-    } while (temp != tail->ptr);
+    } while (temp != tail->next);
     return count;
   }
 
@@ -262,12 +255,12 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    struct Node *temp = tail->ptr;
+    struct Node *temp = tail->next;
     cout << "\nList: ";
     while (temp != tail)
     {
       cout << temp->info << " -> ";
-      temp = temp->ptr;
+      temp = temp->next;
     }
     cout << temp->info << endl;
     return;
@@ -277,17 +270,16 @@ public:
 int main(void)
 {
   int info, ele, choice, loc, count;
-  CircularSinglyLinkedList<int> list;
+  CircularDoublyLinkedList<int> list;
   do
   {
-    cout << "\tCircular Singly Linked List\n"
+    cout << "\tCircular Doubly Linked List\n"
          << "===================================\n"
          << "  (1) Search      (2) InsertFront\n"
          << "  (3) InsertBack  (4) InsertAtLoc\n"
          << "  (5) DeleteFront (6) DeleteBack\n"
          << "  (7) DeleteAtLoc (8) Display\n"
-         << "  (9) Count       (10) Reverse\n"
-         << "  (0) Exit\n\n";
+         << "  (9) Count       (0) Exit\n\n";
     cout << "Enter Choice: ";
     cin >> choice;
     switch (choice)
@@ -332,9 +324,6 @@ int main(void)
       count = list.count();
       if (count != -1)
         cout << "\nNumber of Nodes: " << count << endl;
-      break;
-    case 10:
-      list.reverse();
       break;
     case 0:
     default:
