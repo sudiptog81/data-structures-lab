@@ -4,8 +4,7 @@
   (3) InsertBack  (4) InsertAtLoc
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtLoc (8) Display
-  (9) Count       (10) Reverse
-  (0) Exit
+  (9) Count       (0) Exit
 
 Enter Choice: 2
 
@@ -21,8 +20,7 @@ Press any key to continue...
   (3) InsertBack  (4) InsertAtLoc
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtLoc (8) Display
-  (9) Count       (10) Reverse
-  (0) Exit
+  (9) Count       (0) Exit
 
 Enter Choice: 3
 
@@ -38,8 +36,7 @@ Press any key to continue...
   (3) InsertBack  (4) InsertAtLoc
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtLoc (8) Display
-  (9) Count       (10) Reverse
-  (0) Exit
+  (9) Count       (0) Exit
 
 Enter Choice: 4
 
@@ -56,45 +53,11 @@ Press any key to continue...
   (3) InsertBack  (4) InsertAtLoc
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtLoc (8) Display
-  (9) Count       (10) Reverse
-  (0) Exit
-
-Enter Choice: 10
-
-List reversed...
-List: 30 -> 20 -> 10
-
-Press any key to continue...
-
-    Circular Singly Linked List
-===================================
-  (1) Search      (2) InsertFront
-  (3) InsertBack  (4) InsertAtLoc
-  (5) DeleteFront (6) DeleteBack
-  (7) DeleteAtLoc (8) Display
-  (9) Count       (10) Reverse
-  (0) Exit
-
-Enter Choice: 3
-
-Enter Payload: 40
-Inserted 40 at back...
-List: 30 -> 20 -> 10 -> 40
-
-Press any key to continue...
-
-    Circular Singly Linked List
-===================================
-  (1) Search      (2) InsertFront
-  (3) InsertBack  (4) InsertAtLoc
-  (5) DeleteFront (6) DeleteBack
-  (7) DeleteAtLoc (8) Display
-  (9) Count       (10) Reverse
-  (0) Exit
+  (9) Count       (0) Exit
 
 Enter Choice: 9
 
-Number of Nodes: 4
+Number of Nodes: 3
 
 Press any key to continue...
 
@@ -104,13 +67,13 @@ Press any key to continue...
   (3) InsertBack  (4) InsertAtLoc
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtLoc (8) Display
-  (9) Count       (10) Reverse
-  (0) Exit
+  (9) Count       (0) Exit
 
 Enter Choice: 7
 
-Enter Location: 10
-Invalid location...
+Enter Location: 2
+Deleted node at location 2...
+List: 10 -> 30
 
 Press any key to continue...
 
@@ -120,64 +83,12 @@ Press any key to continue...
   (3) InsertBack  (4) InsertAtLoc
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtLoc (8) Display
-  (9) Count       (10) Reverse
-  (0) Exit
-
-Enter Choice: 7
-
-Enter Location: 3
-Deleted node at location 3...
-List: 30 -> 20 -> 40
-
-Press any key to continue...
-
-    Circular Singly Linked List
-===================================
-  (1) Search      (2) InsertFront
-  (3) InsertBack  (4) InsertAtLoc
-  (5) DeleteFront (6) DeleteBack
-  (7) DeleteAtLoc (8) Display
-  (9) Count       (10) Reverse
-  (0) Exit
+  (9) Count       (0) Exit
 
 Enter Choice: 5
 
 Deleted node at front...
-List: 20 -> 40
-
-Press any key to continue...
-
-    Circular Singly Linked List
-===================================
-  (1) Search      (2) InsertFront
-  (3) InsertBack  (4) InsertAtLoc
-  (5) DeleteFront (6) DeleteBack
-  (7) DeleteAtLoc (8) Display
-  (9) Count       (10) Reverse
-  (0) Exit
-
-Enter Choice: 7
-
-Enter Location: 1
-
-Deleted node at front...
-List: 40
-
-Press any key to continue...
-
-    Circular Singly Linked List
-===================================
-  (1) Search      (2) InsertFront
-  (3) InsertBack  (4) InsertAtLoc
-  (5) DeleteFront (6) DeleteBack
-  (7) DeleteAtLoc (8) Display
-  (9) Count       (10) Reverse
-  (0) Exit
-
-Enter Choice: 6
-
-Deleted node at back...
-List is empty...
+List: 30
 
 Press any key to continue..
 
@@ -187,19 +98,45 @@ Press any key to continue..
   (3) InsertBack  (4) InsertAtLoc
   (5) DeleteFront (6) DeleteBack
   (7) DeleteAtLoc (8) Display
-  (9) Count       (10) Reverse
-  (0) Exit
+  (9) Count       (0) Exit
 
-Enter Choice: 2
+Enter Choice: 6
 
-Enter Payload: 25
-Inserted 25 at front...
-List: 25
+Deleted node at back...
+List is empty...
 
 Press any key to continue...
 
-==690== HEAP SUMMARY:
-==690==     in use at exit: 0 bytes in 0 blocks
-==690==   total heap usage: 8 allocs, 8 frees, 74,832 bytes allocated
-==690== 
-==690== All heap blocks were freed -- no leaks are possible
+    Circular Singly Linked List
+===================================
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtLoc
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtLoc (8) Display
+  (9) Count       (0) Exit
+
+Enter Choice: 3
+
+Enter Payload: 99
+Inserted 99 at back...
+List: 99
+
+Press any key to continue...
+
+    Circular Singly Linked List
+===================================
+  (1) Search      (2) InsertFront
+  (3) InsertBack  (4) InsertAtLoc
+  (5) DeleteFront (6) DeleteBack
+  (7) DeleteAtLoc (8) Display
+  (9) Count       (0) Exit
+
+Enter Choice: 0
+
+Press any key to continue...
+
+==223== HEAP SUMMARY:
+==223==     in use at exit: 0 bytes in 0 blocks
+==223==   total heap usage: 7 allocs, 7 frees, 74,816 bytes allocated
+==223== 
+==223== All heap blocks were freed -- no leaks are possibl

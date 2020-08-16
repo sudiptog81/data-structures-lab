@@ -204,30 +204,6 @@ public:
     return;
   }
 
-  // Reverses the linked list - O(n)
-  void reverse()
-  {
-    if (this->isEmpty())
-    {
-      cout << "\nList is empty...\n";
-      return;
-    }
-    struct Node *temp = tail->ptr,
-                *prev = NULL,
-                *next = NULL;
-    while (temp != NULL)
-    {
-      next = temp->ptr;
-      temp->ptr = prev;
-      prev = temp;
-      temp = next;
-    }
-    tail = prev;
-    cout << "\nList reversed...";
-    this->display();
-    return;
-  }
-
   // Searches for an element - O(n)
   void search(T ele)
   {
@@ -300,8 +276,7 @@ int main(void)
          << "  (3) InsertBack  (4) InsertAtLoc\n"
          << "  (5) DeleteFront (6) DeleteBack\n"
          << "  (7) DeleteAtLoc (8) Display\n"
-         << "  (9) Count       (10) Reverse\n"
-         << "  (0) Exit\n\n";
+         << "  (9) Count       (0) Exit\n\n";
     cout << "Enter Choice: ";
     cin >> choice;
     switch (choice)
@@ -346,9 +321,6 @@ int main(void)
       count = list.count();
       if (count != -1)
         cout << "\nNumber of Nodes: " << count << endl;
-      break;
-    case 10:
-      list.reverse();
       break;
     case 0:
     default:
