@@ -11,7 +11,7 @@ using namespace std;
 void getch();
 void clrscr();
 
-template <typename T>
+template <class T>
 class DoublyLinkedList
 {
 protected:
@@ -24,11 +24,13 @@ protected:
   struct Node *head, *tail;
 
 public:
+  // Constructor
   DoublyLinkedList()
   {
     head = tail = NULL;
   }
 
+  // Destructor
   ~DoublyLinkedList()
   {
     if (this->isEmpty())
@@ -44,11 +46,13 @@ public:
     return;
   }
 
+  // Checks if the list is empty - O(1)
   bool isEmpty()
   {
     return (head == NULL || tail == NULL);
   }
 
+  // Inserts a node at the beginning - O(1)
   void insertFront(T info)
   {
     struct Node *temp = new Node();
@@ -65,6 +69,7 @@ public:
     return;
   }
 
+  // Inserts a node at a specified location - O(n)
   void insertAtLoc(int loc, T info)
   {
     if (loc == 1)
@@ -96,6 +101,7 @@ public:
     return;
   }
 
+  // Inserts a node at the end - O(1)
   void insertBack(T info)
   {
     struct Node *temp = new Node();
@@ -112,6 +118,7 @@ public:
     return;
   }
 
+  // Removes a node from the beginning - O(1)
   void deleteFront()
   {
     if (this->isEmpty())
@@ -131,6 +138,7 @@ public:
     return;
   }
 
+  // Removes a node at a specified location - O(n)
   void deleteAtLoc(int loc)
   {
     if (this->isEmpty())
@@ -166,6 +174,7 @@ public:
     return;
   }
 
+  // Removes a node at the end - O(1)
   void deleteBack()
   {
     if (this->isEmpty())
@@ -185,6 +194,7 @@ public:
     return;
   }
 
+  // Searches for an element - O(n)
   void search(T ele)
   {
     if (this->isEmpty())
@@ -206,6 +216,7 @@ public:
     return;
   }
 
+  // Calculates the number of nodes - O(n)
   int count()
   {
     if (this->isEmpty())
@@ -221,6 +232,7 @@ public:
     return count;
   }
 
+  // Traverses the list and prints all nodes - O(n)
   void display()
   {
     if (this->isEmpty())
