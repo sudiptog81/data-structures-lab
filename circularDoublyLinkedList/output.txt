@@ -167,6 +167,6 @@ Press any key to continue...
 
 ==866== HEAP SUMMARY:
 ==866==     in use at exit: 0 bytes in 0 blocks
-==866==   total heap usage: 7 allocs, 7 frees, 74,848 bytes allocated
+==866==   total heap usage: 7 allocs, 7 frees, 77,920 bytes allocated
 ==866== 
 ==866== All heap blocks were freed -- no leaks are possible

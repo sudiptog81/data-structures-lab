@@ -137,6 +137,6 @@ Press any key to continue...
 
 ==223== HEAP SUMMARY:
 ==223==     in use at exit: 0 bytes in 0 blocks
-==223==   total heap usage: 7 allocs, 7 frees, 74,816 bytes allocated
+==223==   total heap usage: 7 allocs, 7 frees, 77,888 bytes allocated
 ==223== 
 ==223== All heap blocks were freed -- no leaks are possibl

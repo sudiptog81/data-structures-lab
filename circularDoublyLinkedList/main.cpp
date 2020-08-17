@@ -36,7 +36,7 @@ public:
     if (this->isEmpty())
       return;
     struct Node *ptr, *temp = tail->next;
-    while (temp->next != tail)
+    while (temp != tail)
     {
       ptr = temp;
       temp = ptr->next;
