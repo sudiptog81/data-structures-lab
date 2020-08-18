@@ -1,5 +1,6 @@
 /**
- *  Implementation of a Circular Doubly Linked List
+ * Implement Circular Linked List using templates. Include functions for 
+ * insertion, deletion and search of a number, reverse the list.
  *
  *  Written by Sudipto Ghosh for the University of Delhi
  */
@@ -12,16 +13,19 @@ void getch();
 void clrscr();
 
 template <class T>
+class Node
+{
+public:
+  T info;
+  Node *prev;
+  Node *next;
+};
+
+template <class T>
 class CircularDoublyLinkedList
 {
 protected:
-  struct Node
-  {
-    T info;
-    Node *prev;
-    Node *next;
-  };
-  struct Node *tail;
+  Node<T> *tail;
 
 public:
   // Constructor
@@ -35,7 +39,7 @@ public:
   {
     if (this->isEmpty())
       return;
-    struct Node *ptr, *temp = tail->next;
+    Node<T> *ptr, *temp = tail->next;
     while (temp != tail)
     {
       ptr = temp;
@@ -56,7 +60,7 @@ public:
   // Inserts a node at the beginning - O(1)
   void insertFront(T info)
   {
-    struct Node *temp = new Node();
+    Node<T> *temp = new Node<T>();
     temp->info = info;
     if (this->isEmpty())
     {
@@ -95,10 +99,10 @@ public:
       this->insertBack(info);
       return;
     }
-    struct Node *temp = tail->next;
+    Node<T> *temp = tail->next;
     for (int i = 1; temp->next != tail && i < loc - 1; i++)
       temp = temp->next;
-    struct Node *node = new Node();
+    Node<T> *node = new Node<T>();
     node->info = info;
     node->next = temp->next;
     temp->next->prev = node;
@@ -112,7 +116,7 @@ public:
   // Inserts a node at the end - O(1)
   void insertBack(T info)
   {
-    struct Node *temp = new Node();
+    Node<T> *temp = new Node<T>();
     temp->info = info;
     if (this->isEmpty())
     {
@@ -149,7 +153,7 @@ public:
     }
     else
     {
-      struct Node *temp = tail->next;
+      Node<T> *temp = tail->next;
       tail->next = temp->next;
       temp->next->prev = tail;
       delete temp;
@@ -178,7 +182,7 @@ public:
       this->deleteBack();
       return;
     }
-    struct Node *temp = tail->next;
+    Node<T> *temp = tail->next;
     for (int i = 1; temp->next != tail && i < loc; i++)
       temp = temp->next;
     temp->prev->next = temp->next;
@@ -205,7 +209,7 @@ public:
     }
     else
     {
-      struct Node *temp = tail;
+      Node<T> *temp = tail;
       tail = temp->prev;
       tail->next = temp->next;
       delete temp;
@@ -215,6 +219,31 @@ public:
     return;
   }
 
+  // Reverses the linked list - O(n)
+  // void reverse()
+  // {
+  //   if (this->isEmpty())
+  //   {
+  //     cout << "\nList is empty...\n";
+  //     return;
+  //   }
+  //   Node<T> *temp = tail->next,
+  //           *temp1 = NULL;
+  //   tail = temp;
+  //   while (temp != NULL)
+  //   {
+  //     temp1 = temp->prev;
+  //     temp->prev = temp->next;
+  //     temp->next = temp1;
+  //     temp = temp->prev;
+  //   }
+  //   if (temp1 != NULL)
+  //     tail->next = temp1->prev;
+  //   cout << "\nList reversed...";
+  //   this->display();
+  //   return;
+  // }
+
   // Searches for an element - O(n)
   void search(T ele)
   {
@@ -223,7 +252,7 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    struct Node *temp = tail->next;
+    Node<T> *temp = tail->next;
     do
     {
       if (temp->info == ele)
@@ -246,7 +275,7 @@ public:
       return -1;
     }
     int count = 0;
-    struct Node *temp = tail->next;
+    Node<T> *temp = tail->next;
     do
     {
       temp = temp->next;
@@ -263,7 +292,7 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    struct Node *temp = tail->next;
+    Node<T> *temp = tail->next;
     cout << "\nList: ";
     while (temp != tail)
     {
@@ -333,6 +362,9 @@ int main(void)
       if (count != -1)
         cout << "\nNumber of Nodes: " << count << endl;
       break;
+    // case 10:
+    //   list.reverse();
+    //   break;
     case 0:
     default:
       break;

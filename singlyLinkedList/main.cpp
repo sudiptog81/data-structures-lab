@@ -1,5 +1,8 @@
 /**
- *  Implementation of a Singly Linked List
+ * Implement Linked List using templates. Include functions for
+ * insertion, deletion and search of a number, reverse the list and
+ * concatenate two linked lists (include a function and also overload 
+ * operator +). 
  *
  *  Written by Sudipto Ghosh for the University of Delhi
  */
@@ -12,15 +15,18 @@ void getch();
 void clrscr();
 
 template <class T>
+class Node
+{
+public:
+  T info;
+  Node *ptr;
+};
+
+template <class T>
 class SinglyLinkedList
 {
 protected:
-  struct Node
-  {
-    T info;
-    Node *ptr;
-  };
-  struct Node *head, *tail;
+  Node<T> *head, *tail;
 
 public:
   // Constructor
@@ -34,14 +40,14 @@ public:
   {
     if (this->isEmpty())
       return;
-    struct Node *ptr, *temp = head;
-    while (temp != NULL)
+    Node<T> *ptr;
+    for (; !isEmpty();)
     {
-      ptr = temp->ptr;
-      delete temp;
-      temp = ptr;
+      ptr = head->ptr;
+      delete head;
+      head = ptr;
     }
-    head = tail = NULL;
+    head = tail = ptr;
     return;
   }
 
@@ -54,7 +60,7 @@ public:
   // Inserts a node at the beginning - O(1)
   void insertFront(T info)
   {
-    struct Node *temp = new Node();
+    Node<T> *temp = new Node<T>();
     temp->info = info;
     temp->ptr = head;
     if (this->isEmpty())
@@ -73,7 +79,7 @@ public:
       this->insertFront(info);
       return;
     }
-    struct Node *temp = head;
+    Node<T> *temp = head;
     for (int i = 1; temp != NULL && i < loc - 1; i++)
       temp = temp->ptr;
     if (temp == NULL)
@@ -86,7 +92,7 @@ public:
       this->insertBack(info);
       return;
     }
-    struct Node *node = new Node();
+    Node<T> *node = new Node<T>();
     node->info = info;
     node->ptr = temp->ptr;
     temp->ptr = node;
@@ -98,7 +104,7 @@ public:
   // Inserts a node at the end - O(1)
   void insertBack(T info)
   {
-    struct Node *temp = new Node();
+    Node<T> *temp = new Node<T>();
     temp->info = info;
     temp->ptr = NULL;
     if (this->isEmpty())
@@ -119,7 +125,7 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    struct Node *temp = head;
+    Node<T> *temp = head;
     head = temp->ptr;
     delete temp;
     if (this->isEmpty())
@@ -142,7 +148,7 @@ public:
       this->deleteFront();
       return;
     }
-    struct Node *node, *temp = head;
+    Node<T> *node, *temp = head;
     for (int i = 1; temp != NULL && i < loc - 1; i++)
       temp = temp->ptr;
     if (temp == NULL || temp->ptr == NULL)
@@ -176,7 +182,7 @@ public:
       head = tail = NULL;
     else
     {
-      struct Node *temp = head;
+      Node<T> *temp = head;
       while (temp->ptr->ptr != NULL)
         temp = temp->ptr;
       delete temp->ptr;
@@ -196,9 +202,9 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    struct Node *temp = head,
-                *prev = NULL,
-                *next = NULL;
+    Node<T> *temp = head,
+            *prev = NULL,
+            *next = NULL;
     tail = temp;
     while (temp != NULL)
     {
@@ -208,8 +214,31 @@ public:
       temp = next;
     }
     head = prev;
-    cout << "\nList reversed...";
-    this->display();
+    return;
+  }
+
+  // Concatenates two lists - O(1)
+  void concat(SinglyLinkedList<T> &list)
+  {
+    if (!list.isEmpty() && !this->isEmpty())
+    {
+      tail->ptr = list.head;
+      tail = list.tail;
+      list.head = list.tail = NULL;
+      cout << "Concatenated two lists...\n";
+      this->display();
+    }
+    else
+    {
+      cout << "\nOne of the lists is empty...\n";
+    }
+    return;
+  }
+
+  // Overloads the + operator - O(n)
+  void operator+(SinglyLinkedList<T> &list)
+  {
+    this->concat(list);
     return;
   }
 
@@ -221,7 +250,7 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    struct Node *temp = head;
+    Node<T> *temp = head;
     while (temp != NULL)
     {
       if (temp->info == ele)
@@ -244,7 +273,7 @@ public:
       return -1;
     }
     int count = 0;
-    struct Node *temp;
+    Node<T> *temp;
     for (temp = head; temp != NULL;
          temp = temp->ptr, count++)
       ;
@@ -259,7 +288,7 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    struct Node *temp = head;
+    Node<T> *temp = head;
     cout << "\nList: ";
     while (temp->ptr != NULL)
     {
@@ -273,8 +302,8 @@ public:
 
 int main(void)
 {
-  int info, ele, choice, loc, count;
-  SinglyLinkedList<int> list;
+  int choice, ele, info, loc, count;
+  SinglyLinkedList<int> list, list2;
   do
   {
     cout << "\tSingly Linked List\n"
@@ -284,7 +313,7 @@ int main(void)
          << "  (5) DeleteFront (6) DeleteBack\n"
          << "  (7) DeleteAtLoc (8) Display\n"
          << "  (9) Count       (10) Reverse\n"
-         << "  (0) Exit\n\n";
+         << "  (11) Concat     (0) Exit\n\n";
     cout << "Enter Choice: ";
     cin >> choice;
     switch (choice)
@@ -329,6 +358,20 @@ int main(void)
       count = list.count();
       if (count != -1)
         cout << "\nNumber of Nodes: " << count << endl;
+      break;
+    case 11:
+      cout << "\nNumber of Nodes in List B: ";
+      cin >> count;
+      if (count)
+      {
+        cout << "Enter Elements to List B: ";
+        for (int i = 0; i < count; i++)
+        {
+          cin >> info;
+          list2.insertBack(info);
+        }
+        list + list2;
+      }
       break;
     case 10:
       list.reverse();

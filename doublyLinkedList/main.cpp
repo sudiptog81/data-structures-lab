@@ -1,5 +1,6 @@
 /**
- *  Implementation of a Doubly Linked List
+ * Implement Doubly Linked List using templates. Include functions for 
+ * insertion, deletion and search of a number, reverse the list.
  *
  *  Written by Sudipto Ghosh for the University of Delhi
  */
@@ -12,16 +13,19 @@ void getch();
 void clrscr();
 
 template <class T>
+class Node
+{
+public:
+  T info;
+  Node *prev;
+  Node *next;
+};
+
+template <class T>
 class DoublyLinkedList
 {
 protected:
-  struct Node
-  {
-    T info;
-    Node *prev;
-    Node *next;
-  };
-  struct Node *head, *tail;
+  Node<T> *head, *tail;
 
 public:
   // Constructor
@@ -35,14 +39,14 @@ public:
   {
     if (this->isEmpty())
       return;
-    struct Node *ptr, *temp = head;
-    while (temp != NULL)
+    Node<T> *ptr;
+    for (; !isEmpty();)
     {
-      ptr = temp->next;
-      delete temp;
-      temp = ptr;
+      ptr = head->next;
+      delete head;
+      head = ptr;
     }
-    head = tail = NULL;
+    head = tail = ptr;
     return;
   }
 
@@ -55,7 +59,7 @@ public:
   // Inserts a node at the beginning - O(1)
   void insertFront(T info)
   {
-    struct Node *temp = new Node();
+    Node<T> *temp = new Node<T>();
     temp->info = info;
     temp->next = head;
     temp->prev = NULL;
@@ -77,7 +81,7 @@ public:
       this->insertFront(info);
       return;
     }
-    struct Node *temp = head;
+    Node<T> *temp = head;
     for (int i = 1; temp != NULL && i < loc - 1; i++)
       temp = temp->next;
     if (temp == NULL)
@@ -90,7 +94,7 @@ public:
       this->insertBack(info);
       return;
     }
-    struct Node *node = new Node();
+    Node<T> *node = new Node<T>();
     node->info = info;
     node->next = temp->next;
     node->prev = temp;
@@ -104,7 +108,7 @@ public:
   // Inserts a node at the end - O(1)
   void insertBack(T info)
   {
-    struct Node *temp = new Node();
+    Node<T> *temp = new Node<T>();
     temp->info = info;
     temp->next = NULL;
     temp->prev = tail;
@@ -126,7 +130,7 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    struct Node *temp = head;
+    Node<T> *temp = head;
     head = temp->next;
     if (this->isEmpty())
       tail = NULL;
@@ -151,7 +155,7 @@ public:
       this->deleteFront();
       return;
     }
-    struct Node *node, *temp = head;
+    Node<T> *node, *temp = head;
     for (int i = 1; temp != NULL && i < loc - 1; i++)
       temp = temp->next;
     if (temp == NULL || temp->next == NULL)
@@ -182,7 +186,7 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    struct Node *temp = tail;
+    Node<T> *temp = tail;
     tail = temp->prev;
     if (this->isEmpty())
       head = NULL;
@@ -190,6 +194,31 @@ public:
       tail->next = NULL;
     delete temp;
     cout << "\nDeleted node at back...";
+    this->display();
+    return;
+  }
+
+  // Reverses the linked list - O(n)
+  void reverse()
+  {
+    if (this->isEmpty())
+    {
+      cout << "\nList is empty...\n";
+      return;
+    }
+    Node<T> *temp = head,
+            *temp1 = NULL;
+    tail = temp;
+    while (temp != NULL)
+    {
+      temp1 = temp->prev;
+      temp->prev = temp->next;
+      temp->next = temp1;
+      temp = temp->prev;
+    }
+    if (temp1 != NULL)
+      head = temp1->prev;
+    cout << "\nList reversed...";
     this->display();
     return;
   }
@@ -202,7 +231,7 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    struct Node *temp = head;
+    Node<T> *temp = head;
     while (temp != NULL)
     {
       if (temp->info == ele)
@@ -225,7 +254,7 @@ public:
       return -1;
     }
     int count = 0;
-    struct Node *temp;
+    Node<T> *temp;
     for (temp = head; temp != NULL;
          temp = temp->next, count++)
       ;
@@ -240,7 +269,7 @@ public:
       cout << "\nList is empty...\n";
       return;
     }
-    struct Node *temp = head;
+    Node<T> *temp = head;
     cout << "\nList: ";
     while (temp->next != NULL)
     {
@@ -264,7 +293,8 @@ int main(void)
          << "  (3) InsertBack  (4) InsertAtLoc\n"
          << "  (5) DeleteFront (6) DeleteBack\n"
          << "  (7) DeleteAtLoc (8) Display\n"
-         << "  (9) Count       (0) Exit\n\n";
+         << "  (9) Count       (10) Reverse\n"
+         << "  (0) Exit\n\n";
     cout << "Enter Choice: ";
     cin >> choice;
     switch (choice)
@@ -309,6 +339,9 @@ int main(void)
       count = list.count();
       if (count != -1)
         cout << "\nNumber of Nodes: " << count << endl;
+      break;
+    case 10:
+      list.reverse();
       break;
     case 0:
     default:
