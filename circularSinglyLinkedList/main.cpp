@@ -1,5 +1,6 @@
 /**
- *  Implementation of a Circular Singly Linked List
+ *  Implement Circular Linked List using templates. Include functions for 
+ *  insertion, deletion and search of a number, reverse the list.
  *
  *  Written by Sudipto Ghosh for the University of Delhi
  */

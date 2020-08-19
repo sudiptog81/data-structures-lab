@@ -1,0 +1,140 @@
+Enter initial number of nodes in List A: 3
+Enter info for Node 1 of List A: a
+Enter info for Node 2 of List A: z
+Enter info for Node 3 of List A: f
+
+Enter initial number of nodes in List B: 2
+Enter info for Node 1 of List B: n
+Enter info for Node 2 of List B: b
+
+Press any key to continue...
+
+        Ordered Linked List
+===================================
+  (1) Insert - A  (2) Insert - B
+  (3) Delete - A  (4) Delete - B
+  (5) Merge A and B into A
+  (0) Exit
+
+List A: A -> F -> Z
+List B: B -> N
+
+Enter Choice: 1
+
+Enter Node info: c
+
+Inserted c into List A...
+List A: A -> C -> F -> Z
+
+Press any key to continue...
+
+        Ordered Linked List
+===================================
+  (1) Insert - A  (2) Insert - B
+  (3) Delete - A  (4) Delete - B
+  (5) Merge A and B into A
+  (0) Exit
+
+List A: A -> C -> F -> Z
+List B: B -> N
+
+Enter Choice: 2
+
+Enter Node info: w
+
+Inserted w into List B...
+List B: B -> N -> W
+
+Press any key to continue...
+
+        Ordered Linked List
+===================================
+  (1) Insert - A  (2) Insert - B
+  (3) Delete - A  (4) Delete - B
+  (5) Merge A and B into A
+  (0) Exit
+
+List A: A -> C -> F -> Z
+List B: B -> N -> W
+
+Enter Choice: 3
+
+Enter Node info to Delete: a
+
+Deleted a from List A...
+List A: C -> F -> Z
+
+Press any key to continue...
+
+        Ordered Linked List
+===================================
+  (1) Insert - A  (2) Insert - B
+  (3) Delete - A  (4) Delete - B
+  (5) Merge A and B into A
+  (0) Exit
+
+List A: C -> F -> Z
+List B: B -> N -> W
+
+Enter Choice: 4
+
+Enter Node info to Delete: b
+
+Deleted b from List B...
+List B: N -> W
+
+Press any key to continue...
+
+        Ordered Linked List
+===================================
+  (1) Insert - A  (2) Insert - B
+  (3) Delete - A  (4) Delete - B
+  (5) Merge A and B into A
+  (0) Exit
+
+List A: C -> F -> Z
+List B: N -> W
+
+Enter Choice: 5
+
+Merged List B into List A...
+C -> F -> N -> W -> Z
+
+Press any key to continue...
+
+        Ordered Linked List
+===================================
+  (1) Insert - A  (2) Insert - B
+  (3) Delete - A  (4) Delete - B
+  (5) Merge A and B into A
+  (0) Exit
+
+List A: C -> F -> N -> W -> Z
+List B: List is empty...
+
+Enter Choice: 3
+
+Enter Node info to Delete: a
+
+Node Not Found...
+
+Press any key to continue...
+
+        Ordered Linked List
+===================================
+  (1) Insert - A  (2) Insert - B
+  (3) Delete - A  (4) Delete - B
+  (5) Merge A and B into A
+  (0) Exit
+
+List A: C -> F -> N -> W -> Z
+List B: List is empty...
+
+Enter Choice: 1
+
+Enter Node info: a
+
+Inserted a into List A...
+List A: A -> C -> F -> N -> W -> Z
+
+Press any key to continue...

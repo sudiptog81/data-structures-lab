@@ -40,14 +40,14 @@ public:
   {
     if (this->isEmpty())
       return;
-    Node<T> *ptr;
-    for (; !isEmpty();)
+    Node<T> *ptr, *temp = head;
+    while (temp != NULL)
     {
-      ptr = head->ptr;
-      delete head;
-      head = ptr;
+      ptr = temp->ptr;
+      delete temp;
+      temp = ptr;
     }
-    head = tail = ptr;
+    head = tail = NULL;
     return;
   }
 
@@ -179,7 +179,10 @@ public:
       return;
     }
     if (head == tail)
-      head = tail = NULL;
+    {
+      this->deleteFront();
+      return;
+    }
     else
     {
       Node<T> *temp = head;
@@ -214,24 +217,34 @@ public:
       temp = next;
     }
     head = prev;
+    cout << "\nList reversed...";
+    this->display();
     return;
   }
 
-  // Concatenates two lists - O(1)
+  // Concatenates two lists - O(n)
   void concat(SinglyLinkedList<T> &list)
   {
     if (!list.isEmpty() && !this->isEmpty())
     {
-      tail->ptr = list.head;
-      tail = list.tail;
-      list.head = list.tail = NULL;
+      Node<T> *node,
+          *temp = tail,
+          *temp1 = list.head;
+      while (temp1 != NULL)
+      {
+        node = new Node<T>();
+        node->info = temp1->info;
+        node->ptr = NULL;
+        temp->ptr = node;
+        temp = temp->ptr;
+        temp1 = temp1->ptr;
+      }
+      tail = node;
       cout << "Concatenated two lists...\n";
       this->display();
     }
     else
-    {
       cout << "\nOne of the lists is empty...\n";
-    }
     return;
   }
 
@@ -360,7 +373,12 @@ int main(void)
         cout << "\nNumber of Nodes: " << count << endl;
       break;
     case 11:
-      cout << "\nNumber of Nodes in List B: ";
+      if (!list2.isEmpty())
+      {
+        cout << "\nList B:";
+        list2.display();
+      }
+      cout << "\nNumber of Nodes to add in List B: ";
       cin >> count;
       if (count)
       {
