@@ -93,8 +93,6 @@ public:
     Node<T> *temp = head, *temp1;
     if (isalpha(info) && isalpha(temp->info))
       info = (char)(toupper(info));
-    else
-      return 1;
     if (head->info == info)
     {
       head = temp->ptr;
@@ -163,15 +161,23 @@ public:
   // Merges two sorted lists - O(n)
   OrderedLinkedList<T> *merge(OrderedLinkedList<T> &list)
   {
-    if (this->isEmpty())
-      return this;
-    if (list.isEmpty())
-      return &list;
-    if (head->info < list.head->info)
-      return mergeHelper(this, &list);
-    else
-      return mergeHelper(&list, this);
-    return nullptr;
+    // if (this->isEmpty())
+    //   return this;
+    // if (list.isEmpty())
+    //   return &list;
+    // if (head->info < list.head->info)
+    //   return mergeHelper(this, &list);
+    // else
+    //   return mergeHelper(&list, this);
+    // return nullptr;
+
+    Node<T> *temp = list.head;
+    while (temp != NULL)
+    {
+      this->insertNode(temp->info);
+      temp = temp->ptr;
+    }
+    return this;
   }
 
   // Calculates the number of nodes - O(n)

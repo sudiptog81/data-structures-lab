@@ -110,7 +110,7 @@ Press any key to continue...
   (0) Exit
 
 List A: C -> F -> N -> W -> Z
-List B: List is empty...
+List B: N -> W
 
 Enter Choice: 3
 
@@ -128,7 +128,7 @@ Press any key to continue...
   (0) Exit
 
 List A: C -> F -> N -> W -> Z
-List B: List is empty...
+List B: N -> W
 
 Enter Choice: 1
 
