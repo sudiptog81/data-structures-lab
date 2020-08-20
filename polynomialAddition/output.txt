@@ -1,0 +1,288 @@
+Enter initial number of terms in Polynomial A: 4
+Enter term 1 for Polynomial A: 1 3
+Enter term 2 for Polynomial A: 5 1
+Enter term 3 for Polynomial A: 3 2
+Enter term 4 for Polynomial A: 2 0
+
+Enter initial number of terms in Polynomial B: 3
+Enter term 1 for Polynomial B: 14 0
+Enter term 2 for Polynomial B: 4 3
+Enter term 3 for Polynomial B: 3 2
+
+Press any key to continue...
+
+        Polynomials
+===================================
+  (1) Insert - A  (2) Insert - B   
+  (3) Delete - A  (4) Delete - B   
+  (5) Add Polynomials A and B      
+  (0) Exit
+
+Polynomial A: 2x^0 + 5x^1 + 3x^2 + 1x^3
+Polynomial B: 14x^0 + 3x^2 + 4x^3      
+
+Enter Choice: 5
+
+Added Polynomials...
+Sum: 16x^0 + 5x^1 + 6x^2 + 5x^3
+
+Press any key to continue...
+
+        Polynomials
+===================================    
+  (1) Insert - A  (2) Insert - B       
+  (3) Delete - A  (4) Delete - B       
+  (5) Add Polynomials A and B
+  (0) Exit
+
+Polynomial A: 2x^0 + 5x^1 + 3x^2 + 1x^3
+Polynomial B: 14x^0 + 3x^2 + 4x^3      
+
+Enter Choice: 3   
+
+Enter exponent to Delete: 3
+
+Deleted from Polynomial A...    
+Polynomial A: 2x^0 + 5x^1 + 3x^2
+
+Press any key to continue..
+
+        Polynomials
+===================================
+  (1) Insert - A  (2) Insert - B
+  (3) Delete - A  (4) Delete - B
+  (5) Add Polynomials A and B
+  (0) Exit
+
+Polynomial A: 2x^0 + 5x^1 + 3x^2
+Polynomial B: 14x^0 + 3x^2 + 4x^3
+
+Enter Choice: 5
+
+Added Polynomials...
+Sum: 16x^0 + 5x^1 + 6x^2 + 4x^3
+
+Press any key to continue...
+
+        Polynomials
+===================================
+  (1) Insert - A  (2) Insert - B
+  (3) Delete - A  (4) Delete - B
+  (5) Add Polynomials A and B
+  (0) Exit
+
+Polynomial A: 2x^0 + 5x^1 + 3x^2
+Polynomial B: 14x^0 + 3x^2 + 4x^3
+
+Enter Choice: 4
+
+Enter exponent to Delete: 0
+
+Deleted from Polynomial B...
+Polynomial B: 3x^2 + 4x^3   
+
+Press any key to continue...
+
+        Polynomials
+===================================
+  (1) Insert - A  (2) Insert - B
+  (3) Delete - A  (4) Delete - B
+  (5) Add Polynomials A and B
+  (0) Exit
+
+Polynomial A: 2x^0 + 5x^1 + 3x^2
+Polynomial B: 3x^2 + 4x^3
+
+Enter Choice: 4
+
+Enter exponent to Delete: 3
+
+Deleted from Polynomial B...
+Polynomial B: 3x^2
+
+Press any key to continue...
+
+        Polynomials
+===================================
+  (1) Insert - A  (2) Insert - B   
+  (3) Delete - A  (4) Delete - B   
+  (5) Add Polynomials A and B      
+  (0) Exit
+
+Polynomial A: 2x^0 + 5x^1 + 3x^2   
+Polynomial B: 3x^2
+
+Enter Choice: 4
+
+Enter exponent to Delete: 2
+
+Deleted from Polynomial B...  
+Polynomial B: List is empty...
+
+Press any key to continue...
+
+        Polynomials
+===================================
+  (1) Insert - A  (2) Insert - B
+  (3) Delete - A  (4) Delete - B
+  (5) Add Polynomials A and B
+  (0) Exit
+
+Polynomial A: 2x^0 + 5x^1 + 3x^2
+Polynomial B: List is empty...
+
+Enter Choice: 5
+
+Added Polynomials...        
+Sum: 2x^0 + 5x^1 + 3x^2     
+
+Press any key to continue...
+
+        Polynomials
+===================================
+  (1) Insert - A  (2) Insert - B   
+  (3) Delete - A  (4) Delete - B   
+  (5) Add Polynomials A and B      
+  (0) Exit
+
+Polynomial A: 2x^0 + 5x^1 + 3x^2   
+Polynomial B: List is empty...     
+
+Enter Choice: 3
+
+Enter exponent to Delete: 0
+
+Deleted from Polynomial A...
+Polynomial A: 5x^1 + 3x^2   
+
+Press any key to continue...
+
+        Polynomials
+===================================
+  (1) Insert - A  (2) Insert - B   
+  (3) Delete - A  (4) Delete - B   
+  (5) Add Polynomials A and B      
+  (0) Exit
+
+Polynomial A: 5x^1 + 3x^2
+Polynomial B: List is empty...     
+
+Enter Choice: 3
+
+Enter exponent to Delete: 1
+
+Deleted from Polynomial A...
+Polynomial A: 3x^2
+
+Press any key to continue...
+
+        Polynomials
+===================================
+  (1) Insert - A  (2) Insert - B   
+  (3) Delete - A  (4) Delete - B   
+  (5) Add Polynomials A and B      
+  (0) Exit
+
+Polynomial A: 3x^2
+Polynomial B: List is empty...     
+
+Enter Choice: 3
+
+Enter exponent to Delete: 2
+
+Deleted from Polynomial A...  
+Polynomial A: List is empty...
+
+Press any key to continue... 
+
+        Polynomials
+===================================
+  (1) Insert - A  (2) Insert - B   
+  (3) Delete - A  (4) Delete - B   
+  (5) Add Polynomials A and B      
+  (0) Exit
+
+Polynomial A: List is empty...     
+Polynomial B: List is empty...     
+
+Enter Choice: 5
+
+Added Polynomials...        
+Sum: List is empty...       
+
+Press any key to continue...
+
+        Polynomials
+===================================
+  (1) Insert - A  (2) Insert - B   
+  (3) Delete - A  (4) Delete - B   
+  (5) Add Polynomials A and B      
+  (0) Exit
+
+Polynomial A: List is empty...     
+Polynomial B: List is empty...     
+
+Enter Choice: 1
+
+Enter term: 9.18 2
+
+Inserted into Polynomial A...
+Polynomial A: 9.18x^2        
+
+Press any key to continue...
+
+        Polynomials
+===================================
+  (1) Insert - A  (2) Insert - B
+  (3) Delete - A  (4) Delete - B
+  (5) Add Polynomials A and B
+  (0) Exit
+
+Polynomial A: 9.18x^2
+Polynomial B: List is empty...
+
+Enter Choice: 2
+
+Enter Node info: 6.027 3
+
+Inserted into Polynomial B...
+Polynomial B: 6.027x^3       
+
+Press any key to continue...
+
+        Polynomials
+===================================
+  (1) Insert - A  (2) Insert - B
+  (3) Delete - A  (4) Delete - B
+  (5) Add Polynomials A and B
+  (0) Exit
+
+Polynomial A: 9.18x^2
+Polynomial B: 6.027x^3
+
+Enter Choice: 5
+
+Added Polynomials...        
+Sum: 9.18x^2 + 6.027x^3     
+
+Press any key to continue...
+
+        Polynomials
+===================================
+  (1) Insert - A  (2) Insert - B
+  (3) Delete - A  (4) Delete - B
+  (5) Add Polynomials A and B
+  (0) Exit
+
+Polynomial A: 9.18x^2
+Polynomial B: 6.027x^3
+
+Enter Choice: 0
+
+Press any key to continue...
+
+==106== HEAP SUMMARY:
+==106==     in use at exit: 0 bytes in 0 blocks
+==106==   total heap usage: 43 allocs, 43 frees, 76,009 bytes allocated
+==106==
+==106== All heap blocks were freed -- no leaks are possible
