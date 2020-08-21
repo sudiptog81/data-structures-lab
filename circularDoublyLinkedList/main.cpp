@@ -125,12 +125,10 @@ public:
     }
     else
     {
-      if (tail->prev == tail)
-        tail->prev = temp;
       temp->next = tail->next;
       temp->prev = tail;
       tail->next = temp;
-      tail->next->prev = temp;
+      temp->next->prev = temp;
     }
     tail = temp;
     cout << "Inserted " << info << " at back...";
@@ -211,6 +209,7 @@ public:
     {
       Node<T> *temp = tail;
       tail = temp->prev;
+      temp->next->prev = tail;
       tail->next = temp->next;
       delete temp;
     }
@@ -220,29 +219,28 @@ public:
   }
 
   // Reverses the linked list - O(n)
-  // void reverse()
-  // {
-  //   if (this->isEmpty())
-  //   {
-  //     cout << "\nList is empty...\n";
-  //     return;
-  //   }
-  //   Node<T> *temp = tail->next,
-  //           *temp1 = NULL;
-  //   tail = temp;
-  //   while (temp != NULL)
-  //   {
-  //     temp1 = temp->prev;
-  //     temp->prev = temp->next;
-  //     temp->next = temp1;
-  //     temp = temp->prev;
-  //   }
-  //   if (temp1 != NULL)
-  //     tail->next = temp1->prev;
-  //   cout << "\nList reversed...";
-  //   this->display();
-  //   return;
-  // }
+  void reverse()
+  {
+    if (this->isEmpty())
+    {
+      cout << "\nList is empty...\n";
+      return;
+    }
+    Node<T> *temp = tail->next,
+            *headRef = tail->next,
+            *temp1 = NULL;
+    do
+    {
+      temp1 = temp->prev;
+      temp->prev = temp->next;
+      temp->next = temp1;
+      temp = temp->prev;
+    } while (temp != headRef);
+    tail = headRef;
+    cout << "\nList reversed...";
+    this->display();
+    return;
+  }
 
   // Searches for an element - O(n)
   void search(T ele)
@@ -316,7 +314,8 @@ int main(void)
          << "  (3) InsertBack  (4) InsertAtLoc\n"
          << "  (5) DeleteFront (6) DeleteBack\n"
          << "  (7) DeleteAtLoc (8) Display\n"
-         << "  (9) Count       (0) Exit\n\n";
+         << "  (9) Count       (10) Reverse\n"
+         << "  (0) Exit\n\n";
     cout << "Enter Choice: ";
     cin >> choice;
     switch (choice)
@@ -362,9 +361,9 @@ int main(void)
       if (count != -1)
         cout << "\nNumber of Nodes: " << count << endl;
       break;
-    // case 10:
-    //   list.reverse();
-    //   break;
+    case 10:
+      list.reverse();
+      break;
     case 0:
     default:
       break;
