@@ -29,15 +29,13 @@ public:
     int size = strlen(str);
     for (int i = 0; i < size; i++)
     {
-      if (str[i] == '(' ||
-          str[i] == '[' ||
-          str[i] == '{')
-      {
-        this->stack.push(str[i]);
-        continue;
-      }
       switch (str[i])
       {
+      case '(':
+      case '{':
+      case '[':
+        this->stack.push(str[i]);
+        break;
       case ')':
         ch = this->stack.pop();
         if (ch == '{' || ch == '[')
@@ -86,7 +84,8 @@ int main(void)
     cout << "\tDelimiter Matcher\n"
          << "===================================\n"
          << "  (1) Read Expression\n"
-         << "  (2) Read Contents from File\n\n"
+         << "  (2) Read Contents from File\n"
+         << "  (0) Exit\n\n"
          << "Enter a choice: ";
     cin >> choice;
     switch (choice)

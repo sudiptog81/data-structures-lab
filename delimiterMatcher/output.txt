@@ -1,7 +1,8 @@
         Delimiter Matcher
 ===================================
   (1) Read Expression
-  (2) Read Contents from File      
+  (2) Read Contents from File    
+  (0) Exit
 
 Enter a choice: 1
 Enter Expression: {()}[]
@@ -14,6 +15,7 @@ Press any key to continue...
 ===================================
   (1) Read Expression
   (2) Read Contents from File
+  (0) Exit
 
 Enter a choice: 2
 Enter Filename: input2.txt
