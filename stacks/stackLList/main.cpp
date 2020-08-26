@@ -16,18 +16,12 @@ template <class T>
 class Stack
 {
 protected:
-  int tos;
   SinglyLinkedList<T> list;
 
 public:
-  Stack()
-  {
-    this->tos = -1;
-  }
-
   bool push(T ele)
   {
-    this->list.insertBack(ele);
+    this->list.insertFront(ele);
     return true;
   }
 
@@ -38,8 +32,8 @@ public:
       cout << "ERROR: Stack Underflow\n";
       return (T)(NULL);
     }
-    T ele = this->list.getTail();
-    this->list.deleteBack();
+    T ele = this->list.getHead();
+    this->list.deleteFront();
     return ele;
   }
 
@@ -50,7 +44,7 @@ public:
       cout << "Stack Empty";
       return (T)(NULL);
     }
-    return this->list.getTail();
+    return this->list.getHead();
   }
 
   bool isEmpty()

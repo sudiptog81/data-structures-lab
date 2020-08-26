@@ -51,10 +51,10 @@ public:
     return;
   }
 
-  // Returns the data on the tail of the list - O(1)
-  T getTail()
+  // Returns the data on the head of the list - O(1)
+  T getHead()
   {
-    return this->isEmpty() ? (T)(NULL) : tail->info;
+    return this->isEmpty() ? (T)(NULL) : head->info;
   }
 
   // Checks if the list is empty - O(1)

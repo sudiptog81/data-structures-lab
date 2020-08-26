@@ -1,68 +1,59 @@
 /**
  *  WAP to add two large integers using stack.
- * 
+ *
  *  Written by Sudipto Ghosh for the University of Delhi
  */
 
-#include <string>
-#include <cstring>
 #include "stack.hpp"
+#include <cstring>
+#include <string>
 #define MAX_STRLEN 256
 
-class BigInt
-{
+class BigInt {
 protected:
   int size;
   Stack<int> *stack;
 
 public:
-  BigInt(int size = 10)
-  {
+  BigInt(int size = 10) {
     this->size = size;
     this->stack = new Stack<int>(size);
   }
 
-  ~BigInt()
-  {
-    delete this->stack;
-  }
+  ~BigInt() { delete this->stack; }
 
-  void setInteger(string &str)
-  {
+  void setInteger(string &str) {
     for (int i = 0; i < str.length(); i++)
       this->stack->push(str[i] - '0');
     return;
   }
 
-  void displayInteger()
-  {
+  void displayInteger() {
     while (!this->stack->isEmpty())
       cout << this->stack->pop();
     return;
   }
 
-  static void add(BigInt &num1, BigInt &num2, BigInt &res)
-  {
+  static void add(BigInt &num1, BigInt &num2, BigInt &res) {
     int i = num1.size, j = num2.size;
-    int temp, carry = 0;
-    int max = (i >= j ? i : j);
-    while (max > 0)
-    {
-      carry = 0;
-      temp = carry + num1.stack->pop() + num2.stack->pop();
-      if (temp >= 10)
-      {
-        carry = 1;
-        temp %= 10;
+    int temp, num1Pop, num2Pop, carry = 0;
+    while (num1.size > num2.size ? !num1.stack->isEmpty()
+                                 : !num2.stack->isEmpty()) {
+      num1Pop = num1.stack->isEmpty() ? 0 : num1.stack->pop();
+      num2Pop = num2.stack->isEmpty() ? 0 : num2.stack->pop();
+      temp = carry + num1Pop + num2Pop;
+      if (temp >= 10) {
+        carry = temp / 10;
+        temp = temp % 10;
       }
       res.stack->push(temp);
-      --max;
     }
+    if (carry)
+      res.stack->push(carry);
   }
 };
 
-int main(void)
-{
+int main(void) {
   string num1, num2;
 
   cout << "Enter BigInt 1: ";
@@ -71,8 +62,7 @@ int main(void)
   cout << "Enter BigInt 2: ";
   cin >> num2;
 
-  BigInt bigInt1(num1.length()),
-      bigInt2(num2.length()),
+  BigInt bigInt1(num1.length()), bigInt2(num2.length()),
       bigIntRes(num1.length() + num2.length());
 
   bigInt1.setInteger(num1);
