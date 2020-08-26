@@ -24,3 +24,15 @@ FAILURE: Delimiters are Not Matched
 
 Press any key to continue... 
 
+        Delimiter Matcher
+===================================
+  (1) Read Expression
+  (2) Read Contents from File
+  (0) Exit
+
+Enter a choice: 2
+Enter Filename: input3.txt
+
+FAILURE: Delimiters are Not Matched
+
+Press any key to continue...

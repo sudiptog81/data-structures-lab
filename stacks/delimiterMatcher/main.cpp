@@ -1,12 +1,12 @@
 /**
  *  Delimiter Matcher
- * 
+ *
  *  Written by Sudipto Ghosh for the University of Delhi
  */
 
-#include <fstream>
-#include <cstring>
 #include "stack.hpp"
+#include <cstring>
+#include <fstream>
 #define MAX_STRLEN 256
 
 using namespace std;
@@ -14,55 +14,61 @@ using namespace std;
 void getch();
 void clrscr();
 
-class DelimiterMatcher
-{
+class DelimiterMatcher {
 protected:
   Stack<char> stack;
 
 public:
-  bool isMatched(char *str)
-  {
+  bool isMatched(char *str) {
     this->stack.clear();
     if (!str)
       return true;
     char ch, temp, temp1;
     int size = strlen(str);
-    for (int i = 0; i < size; i++)
-    {
-      switch (str[i])
-      {
+    for (int i = 0; i < size; i++) {
+      switch (str[i]) {
       case '(':
       case '{':
       case '[':
         this->stack.push(str[i]);
         break;
+      case '/':
+        if (str[i + 1] == '*')
+          this->stack.push(str[i]);
+        break;
       case ')':
         ch = this->stack.pop();
-        if (ch == '{' || ch == '[')
+        if (ch == '{' || ch == '[' || ch == '/')
           return false;
         break;
       case '}':
         ch = this->stack.pop();
-        if (ch == '(' || ch == '[')
+        if (ch == '(' || ch == '[' || ch == '/')
           return false;
         break;
       case ']':
         ch = this->stack.pop();
-        if (ch == '(' || ch == '{')
+        if (ch == '(' || ch == '{' || ch == '/')
           return false;
+        break;
+      case '*':
+        ch = this->stack.pop();
+        if (str[i + 1] == '/') {
+          if (ch != '/')
+            return false;
+        } else
+          this->stack.push(ch);
         break;
       }
     }
     return (this->stack.isEmpty());
   }
 
-  bool isMatchedFile(char *filename)
-  {
+  bool isMatchedFile(char *filename) {
     this->stack.clear();
     int i = 0;
     ifstream fd(filename);
-    if (!fd)
-    {
+    if (!fd) {
       cout << "ERROR: Unable to open file\n";
       return false;
     }
@@ -74,13 +80,11 @@ public:
   }
 };
 
-int main(void)
-{
+int main(void) {
   int choice;
   char str[MAX_STRLEN] = {'\0'};
   DelimiterMatcher matcher;
-  do
-  {
+  do {
     cout << "\tDelimiter Matcher\n"
          << "===================================\n"
          << "  (1) Read Expression\n"
@@ -88,8 +92,7 @@ int main(void)
          << "  (0) Exit\n\n"
          << "Enter a choice: ";
     cin >> choice;
-    switch (choice)
-    {
+    switch (choice) {
     case 1:
       cout << "Enter Expression: ";
       cin >> str;
@@ -114,16 +117,14 @@ int main(void)
   return 0;
 }
 
-void getch()
-{
+void getch() {
   cout << "\nPress any key to continue...";
   cin.ignore();
   cin.get();
   return;
 }
 
-void clrscr()
-{
+void clrscr() {
 #ifdef _WIN32
   system("cls");
 #elif __unix__
