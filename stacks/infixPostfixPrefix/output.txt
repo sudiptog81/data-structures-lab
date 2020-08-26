@@ -1,0 +1,55 @@
+        Main Menu
+==========================
+  (1) Infix to Postfix
+  (2) Infix to Prefix
+  (3) Postfix to Infix
+  (4) Prefix to Infix
+  (0) Exit
+
+Enter Choice: 1              
+Enter Infix Expression: (a-b/c)*(a/k-l)
+Postfix Expression: abc/-ak/l-*
+
+Press any key to continue..
+
+        Main Menu
+==========================
+  (1) Infix to Postfix
+  (2) Infix to Prefix
+  (3) Postfix to Infix
+  (4) Prefix to Infix
+  (0) Exit
+
+Enter Choice: 2
+Enter Infix Expression: (a-b/c)*(a/k-l)
+Prefix Expression: *-a/bc-/akl
+
+Press any key to continue...
+
+        Main Menu
+==========================
+  (1) Infix to Postfix
+  (2) Infix to Prefix
+  (3) Postfix to Infix
+  (4) Prefix to Infix
+  (0) Exit
+
+Enter Choice: 3
+Enter Postfix Expression: abc/-ak/l-*
+Infix Expression: ((a-(b/c))*((a/k)-l))
+
+Press any key to continue...
+
+        Main Menu
+==========================
+  (1) Infix to Postfix
+  (2) Infix to Prefix
+  (3) Postfix to Infix
+  (4) Prefix to Infix
+  (0) Exit
+
+Enter Choice: 4
+Enter Prefix Expression: *-a/bc-/akl
+Infix Expression: ((a-(b/c))*((a/k)-l))
+
+Press any key to continue...
