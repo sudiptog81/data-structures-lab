@@ -1,5 +1,5 @@
 image: gitpod/workspace-full
 
 tasks:
-  - init: 'chmod +x test.sh'
-    command: './test.sh'
+  - init: "chmod +x test.sh"
+    command: "chmod +x test.sh && ./test.sh"
