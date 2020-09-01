@@ -1,0 +1,171 @@
+        Linear Queue - Array
+===================================
+  (1) Enqueue  (2) Dequeue
+  (3) Front    (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 1
+
+Enter Element: 2
+
+Enqueued 2...
+Queue: 2
+
+Press any key to continue...
+
+        Linear Queue - Array
+===================================
+  (1) Enqueue  (2) Dequeue
+  (3) Front    (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 1
+
+Enter Element: 3
+
+Enqueued 3...
+Queue: 2 <- 3
+
+Press any key to continue...
+
+        Linear Queue - Array
+===================================
+  (1) Enqueue  (2) Dequeue
+  (3) Front    (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 1
+
+Enter Element: 10
+
+Enqueued 10...
+Queue: 2 <- 3 <- 10
+
+Press any key to continue...
+
+        Linear Queue - Array
+===================================
+  (1) Enqueue  (2) Dequeue
+  (3) Front    (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 3
+
+Front Element: 2
+
+Press any key to continue...
+
+        Linear Queue - Array
+===================================
+  (1) Enqueue  (2) Dequeue
+  (3) Front    (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 1
+
+Enter Element: 15
+
+Enqueued 15...
+Queue: 2 <- 3 <- 10 <- 15
+
+Press any key to continue...
+
+        Linear Queue - Array
+===================================
+  (1) Enqueue  (2) Dequeue
+  (3) Front    (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 1
+
+Enter Element: 20
+ERROR: Queue Filled
+
+Press any key to continue...
+
+        Linear Queue - Array
+===================================
+  (1) Enqueue  (2) Dequeue
+  (3) Front    (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 2
+
+Dequeued 2...
+Queue: 3 <- 10 <- 15
+
+Press any key to continue...
+
+        Linear Queue - Array
+===================================
+  (1) Enqueue  (2) Dequeue
+  (3) Front    (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 2
+
+Dequeued 3...
+Queue: 10 <- 15
+
+Press any key to continue...
+
+        Linear Queue - Array
+===================================
+  (1) Enqueue  (2) Dequeue
+  (3) Front    (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 1
+
+Enter Element: 10
+ERROR: Queue Filled
+
+Press any key to continue...
+
+
+        Linear Queue - Array
+===================================
+  (1) Enqueue  (2) Dequeue
+  (3) Front    (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 5
+
+Queue: 10 <- 15
+
+Press any key to continue...
+
+        Linear Queue - Array
+===================================
+  (1) Enqueue  (2) Dequeue
+  (3) Front    (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 2
+
+Dequeued 10...
+Queue: 15
+
+Press any key to continue...
+
+        Linear Queue - Array
+===================================
+  (1) Enqueue  (2) Dequeue
+  (3) Front    (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 2
+
+Dequeued 15...
+Queue: Queue Empty
+Press any key to continue...
+
+        Linear Queue - Array
+===================================
+  (1) Enqueue  (2) Dequeue
+  (3) Front    (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 0
+
+Press any key to continue...
