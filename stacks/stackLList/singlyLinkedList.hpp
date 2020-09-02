@@ -285,10 +285,9 @@ public:
       return;
     }
     Node<T> *temp = head;
-    cout << "\nList: ";
     while (temp->ptr != NULL)
     {
-      cout << temp->info << " -> ";
+      cout << temp->info << " <- ";
       temp = temp->ptr;
     }
     cout << temp->info << endl;

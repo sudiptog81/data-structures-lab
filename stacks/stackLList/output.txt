@@ -1,10 +1,119 @@
-Pushing 1...
-Pushing 2...
-Pushing 3...
-Pushing 4...
-Pushing 5...
-Popped 5...
-Popped 4...
+        Stack - SLList
+=============================
+  (1) Push     (2) Pop
+  (3) Top      (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 1
+
+Enter Element: 1
+
+Pushed 1...
+Stack: 1
+
+Press any key to continue...
+
+        Stack - SLList
+=============================
+  (1) Push     (2) Pop
+  (3) Top      (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 1
+
+Enter Element: 2
+
+Pushed 2...
+Stack: 2 <- 1
+
+Press any key to continue...
+
+        Stack - SLList
+=============================
+  (1) Push     (2) Pop
+  (3) Top      (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 1
+
+Enter Element: 3
+
+Pushed 3...
+Stack: 3 <- 2 <- 1
+
+Press any key to continue...
+
+        Stack - SLList
+=============================
+  (1) Push     (2) Pop
+  (3) Top      (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 3
+
+Top Element: 3
+
+Press any key to continue...
+
+        Stack - SLList
+=============================
+  (1) Push     (2) Pop
+  (3) Top      (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 2
+
 Popped 3...
+Stack: 2 <- 1
+
+Press any key to continue...
+
+        Stack - SLList
+=============================
+  (1) Push     (2) Pop
+  (3) Top      (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 2
+
 Popped 2...
+Stack: 1
+
+Press any key to continue...
+
+        Stack - SLList
+=============================
+  (1) Push     (2) Pop
+  (3) Top      (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 2
+
 Popped 1...
+Stack Empty
+Press any key to continue...
+
+        Stack - SLList
+=============================
+  (1) Push     (2) Pop
+  (3) Top      (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 1
+
+Enter Element: 19
+
+Pushed 19...
+Stack: 19
+
+Press any key to continue...
+
+        Stack - SLList
+=============================
+  (1) Push     (2) Pop
+  (3) Top      (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 4
+
+Press any key to continue...
