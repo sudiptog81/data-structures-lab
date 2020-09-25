@@ -1,0 +1,228 @@
+      MENU      
+================
+(1) Insertion
+(2) Searching a node
+(3) Display its preorder, postorder and inorder traversals. (recursive)
+(4) Display its preorder, postorder and inorder traversals. (iterative)
+(5) Display level-by-level traversal. (BFS)
+(6) Create a mirror image of tree
+(7) Count the non-leaf, leaf and total number of nodes  
+(8) Search for an element x in the BST and change its value to y 
+    and then place the node with value y at its appropriate position
+(9) Display height of tree
+(10) Perform deletion by merging
+(11) Perform deletion by copying
+(0) Exit
+
+Enter Choice: 1
+
+Enter Node Data: 10
+
+Press any key to continue...
+
+      MENU      
+================
+(1) Insertion
+(2) Searching a node
+(3) Display its preorder, postorder and inorder traversals. (recursive)
+(4) Display its preorder, postorder and inorder traversals. (iterative)
+(5) Display level-by-level traversal. (BFS)
+(6) Create a mirror image of tree
+(7) Count the non-leaf, leaf and total number of nodes  
+(8) Search for an element x in the BST and change its value to y 
+    and then place the node with value y at its appropriate position
+(9) Display height of tree
+(10) Perform deletion by merging
+(11) Perform deletion by copying
+(0) Exit
+
+Enter Choice: 1
+
+Enter Node Data: 14
+
+Press any key to continue...
+
+      MENU      
+================
+(1) Insertion
+(2) Searching a node
+(3) Display its preorder, postorder and inorder traversals. (recursive)
+(4) Display its preorder, postorder and inorder traversals. (iterative)
+(5) Display level-by-level traversal. (BFS)
+(6) Create a mirror image of tree
+(7) Count the non-leaf, leaf and total number of nodes  
+(8) Search for an element x in the BST and change its value to y 
+    and then place the node with value y at its appropriate position
+(9) Display height of tree
+(10) Perform deletion by merging
+(11) Perform deletion by copying
+(0) Exit
+
+Enter Choice: 1
+
+Enter Node Data: 5
+
+Press any key to continue...
+
+      MENU      
+================
+(1) Insertion
+(2) Searching a node
+(3) Display its preorder, postorder and inorder traversals. (recursive)
+(4) Display its preorder, postorder and inorder traversals. (iterative)
+(5) Display level-by-level traversal. (BFS)
+(6) Create a mirror image of tree
+(7) Count the non-leaf, leaf and total number of nodes  
+(8) Search for an element x in the BST and change its value to y 
+    and then place the node with value y at its appropriate position
+(9) Display height of tree
+(10) Perform deletion by merging
+(11) Perform deletion by copying
+(0) Exit
+
+Enter Choice: 1
+
+Enter Node Data: 1
+
+Press any key to continue...
+
+================
+(1) Insertion
+(2) Searching a node
+(3) Display its preorder, postorder and inorder traversals. (recursive)
+(4) Display its preorder, postorder and inorder traversals. (iterative)
+(5) Display level-by-level traversal. (BFS)
+(6) Create a mirror image of tree
+(7) Count the non-leaf, leaf and total number of nodes  
+(8) Search for an element x in the BST and change its value to y 
+    and then place the node with value y at its appropriate position
+(9) Display height of tree
+(10) Perform deletion by merging
+(11) Perform deletion by copying
+(0) Exit
+
+Enter Choice: 1
+
+Enter Node Data: 6
+
+Press any key to continue...
+
+      MENU      
+================
+(1) Insertion
+(2) Searching a node
+(3) Display its preorder, postorder and inorder traversals. (recursive)
+(4) Display its preorder, postorder and inorder traversals. (iterative)
+(5) Display level-by-level traversal. (BFS)
+(6) Create a mirror image of tree
+(7) Count the non-leaf, leaf and total number of nodes  
+(8) Search for an element x in the BST and change its value to y 
+    and then place the node with value y at its appropriate position
+(9) Display height of tree
+(10) Perform deletion by merging
+(11) Perform deletion by copying
+(0) Exit
+
+Enter Choice: 2
+
+Enter Search Data: 2
+Search Result: Not Found
+
+Press any key to continue...
+
+      MENU      
+================
+(1) Insertion
+(2) Searching a node
+(3) Display its preorder, postorder and inorder traversals. (recursive)
+(4) Display its preorder, postorder and inorder traversals. (iterative)
+(5) Display level-by-level traversal. (BFS)
+(6) Create a mirror image of tree
+(7) Count the non-leaf, leaf and total number of nodes  
+(8) Search for an element x in the BST and change its value to y 
+    and then place the node with value y at its appropriate position
+(9) Display height of tree
+(10) Perform deletion by merging
+(11) Perform deletion by copying
+(0) Exit
+
+Enter Choice: 2
+
+Enter Search Data: 1
+Search Result: Found
+
+Press any key to continue...
+
+      MENU      
+================
+(1) Insertion
+(2) Searching a node
+(3) Display its preorder, postorder and inorder traversals. (recursive)
+(4) Display its preorder, postorder and inorder traversals. (iterative)
+(5) Display level-by-level traversal. (BFS)
+(6) Create a mirror image of tree
+(7) Count the non-leaf, leaf and total number of nodes  
+(8) Search for an element x in the BST and change its value to y 
+    and then place the node with value y at its appropriate position
+(9) Display height of tree
+(10) Perform deletion by merging
+(11) Perform deletion by copying
+(0) Exit
+
+Enter Choice: 3
+
+In-Order Recursive Traversal: 1 5 6 10 14 
+Pre-Order Recursive Traversal: 10 5 1 6 14 
+Post-Order Recursive Traversal: 1 6 5 14 10 
+
+Press any key to continue...
+
+      MENU      
+================
+(1) Insertion
+(2) Searching a node
+(3) Display its preorder, postorder and inorder traversals. (recursive)
+(4) Display its preorder, postorder and inorder traversals. (iterative)
+(5) Display level-by-level traversal. (BFS)
+(6) Create a mirror image of tree
+(7) Count the non-leaf, leaf and total number of nodes  
+(8) Search for an element x in the BST and change its value to y 
+    and then place the node with value y at its appropriate position
+(9) Display height of tree
+(10) Perform deletion by merging
+(11) Perform deletion by copying
+(0) Exit
+
+Enter Choice: 4
+
+In-Order Iterative Traversal: 1 5 6 10 14 
+Pre-Order Iterative Traversal: 10 5 1 6 14 
+Post-Order Iterative Traversal: 1 6 5 14 10 
+
+Press any key to continue...
+
+      MENU      
+================
+(1) Insertion
+(2) Searching a node
+(3) Display its preorder, postorder and inorder traversals. (recursive)
+(4) Display its preorder, postorder and inorder traversals. (iterative)
+(5) Display level-by-level traversal. (BFS)
+(6) Create a mirror image of tree
+(7) Count the non-leaf, leaf and total number of nodes  
+(8) Search for an element x in the BST and change its value to y 
+    and then place the node with value y at its appropriate position
+(9) Display height of tree
+(10) Perform deletion by merging
+(11) Perform deletion by copying
+(0) Exit
+
+Enter Choice: 5
+
+Level-by-level Traversal: 
+10 
+5 14 
+1 6 
+
+Press any key to continue...
+
