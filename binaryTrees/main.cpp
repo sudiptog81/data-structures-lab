@@ -18,6 +18,7 @@
  */
 
 #include "stack.hpp"
+#include "queue.hpp"
 
 void getch();
 void clrscr();
@@ -39,7 +40,9 @@ class BinarySearchTree
 {
 public:
   Node<int> *root;
-  Stack<Node<int> *> stack1, stack2;
+  Stack<Node<int> *> stack;
+  Queue<Node<int> *> queue;
+  int countLeaf, countNonLeaf;
 
   BinarySearchTree()
   {
@@ -65,7 +68,7 @@ public:
         temp->left = temp->right = nullptr;
         current->left = temp;
       }
-      else if ((data > current->data) &&
+      else if ((data >= current->data) &&
                (current->right == nullptr))
       {
         temp = new Node<int>;
@@ -127,14 +130,14 @@ public:
     Node<int> *current = root;
 
     while (current != nullptr ||
-           stack1.isEmpty() == false)
+           stack.isEmpty() == false)
     {
       while (current != nullptr)
       {
-        stack1.push(current);
+        stack.push(current);
         current = current->left;
       }
-      current = stack1.pop();
+      current = stack.pop();
       cout << current->data << " ";
       current = current->right;
     }
@@ -145,15 +148,15 @@ public:
     Node<int> *node, *temp = root;
     if (temp == nullptr)
       return;
-    stack1.push(temp);
-    while (stack1.isEmpty() == false)
+    stack.push(temp);
+    while (!stack.isEmpty())
     {
-      node = stack1.pop();
+      node = stack.pop();
       cout << node->data << " ";
       if (node->right)
-        stack1.push(node->right);
+        stack.push(node->right);
       if (node->left)
-        stack1.push(node->left);
+        stack.push(node->left);
     }
   }
 
@@ -167,16 +170,16 @@ public:
       while (temp)
       {
         if (temp->right)
-          stack1.push(temp->right);
-        stack1.push(temp);
+          stack.push(temp->right);
+        stack.push(temp);
         temp = temp->left;
       }
-      temp = stack1.pop();
-      if (temp->right && !stack1.isEmpty() &&
-          stack1.top() == temp->right)
+      temp = stack.pop();
+      if (temp->right && !stack.isEmpty() &&
+          stack.top() == temp->right)
       {
-        stack1.pop();
-        stack1.push(temp);
+        stack.pop();
+        stack.push(temp);
         temp = temp->right;
       }
       else
@@ -184,45 +187,42 @@ public:
         cout << temp->data << " ";
         temp = nullptr;
       }
-    } while (!stack1.isEmpty());
+    } while (!stack.isEmpty());
   }
 
-  int levelByLevelTraversal()
+  void levelByLevelTraversal()
   {
     Node<int> *current = root;
-    stack1.push(current);
 
-    while (!(stack1.isEmpty()) ||
-           !(stack2.isEmpty()))
+    if (current == nullptr)
+      return;
+
+    queue.enqueue(current);
+    while (!queue.isEmpty())
     {
-      if (!stack1.isEmpty())
-        while (!stack1.isEmpty())
-        {
-          current = stack1.pop();
-          cout << current->data << " ";
-          if (current->right != nullptr)
-            stack2.push(current->right);
-          if (current->left != nullptr)
-            stack2.push(current->left);
-        }
-      else
-        break;
-      cout << endl;
-
-      if (!stack2.isEmpty())
-        while (!stack2.isEmpty())
-        {
-          current = stack2.pop();
-          cout << current->data << " ";
-          if (current->right != nullptr)
-            stack1.push(current->right);
-          if (current->left != nullptr)
-            stack1.push(current->left);
-        }
-      else
-        break;
-      cout << endl;
+      current = queue.dequeue();
+      cout << current->data << " ";
+      if (current->left)
+        queue.enqueue(current->left);
+      if (current->right)
+        queue.enqueue(current->right);
     }
+
+    cout << endl;
+  }
+
+  void countNodes(Node<int> *current)
+  {
+    if (current == nullptr)
+      return;
+    if (current->left != nullptr ||
+        current->right != nullptr)
+      countNonLeaf++;
+    if (current->left == nullptr &&
+        current->right == nullptr)
+      countLeaf++;
+    countNodes(current->left);
+    countNodes(current->right);
   }
 };
 
@@ -296,6 +296,19 @@ int main(void)
       cout << endl;
       cout << "Level-by-level Traversal: \n";
       tree.levelByLevelTraversal();
+      break;
+    case 7:
+      tree.countLeaf = tree.countNonLeaf = 0;
+      tree.countNodes(tree.root);
+      cout << endl;
+      cout << "Leaf Nodes: "
+           << tree.countLeaf << endl;
+      cout << "Non-Leaf Nodes: "
+           << tree.countNonLeaf << endl;
+      cout << "Total Nodes: "
+           << tree.countNonLeaf +
+                  tree.countLeaf
+           << endl;
       break;
     case 0:
     default:
