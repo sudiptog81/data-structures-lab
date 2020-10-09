@@ -211,6 +211,39 @@ public:
     cout << endl;
   }
 
+  void mirror(Node<int> *current)
+  {
+    if (current == nullptr)
+      return;
+
+    else
+    {
+      mirror(current->left);
+      mirror(current->right);
+
+      Node<int> *temp = current->left;
+      current->left = current->right;
+      current->right = temp;
+    }
+  }
+
+  int height(Node<int> *current)
+  {
+    if (current == nullptr)
+      return 0;
+
+    else
+    {
+      int leftHeight = height(current->left);
+      int rightHeight = height(current->right);
+
+      if (leftHeight > rightHeight)
+        return (leftHeight + 1);
+      else
+        return (rightHeight + 1);
+    }
+  }
+
   void countNodes(Node<int> *current)
   {
     if (current == nullptr)
@@ -297,6 +330,10 @@ int main(void)
       cout << "Level-by-level Traversal: \n";
       tree.levelByLevelTraversal();
       break;
+    case 6:
+      cout << endl;
+      cout << "Tree converted to its Mirror Tree..."
+           << endl;
     case 7:
       tree.countLeaf = tree.countNonLeaf = 0;
       tree.countNodes(tree.root);
@@ -310,6 +347,11 @@ int main(void)
                   tree.countLeaf
            << endl;
       break;
+    case 9:
+      cout << endl;
+      cout << "Height of Tree: "
+           << tree.height(tree.root)
+           << endl;
     case 0:
     default:
       break;
