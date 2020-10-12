@@ -2,50 +2,69 @@
 
 using namespace std;
 
-class PriorityQueue
+int heap[20];
+int heapSize;
+
+int parent(int i)
 {
-  int heap[20];
-  int heapSize;
+  return i / 2 + 1;
+}
 
-  PriorityQueue(int n)
-  {
-    heapSize = n;
-  }
+int left(int i)
+{
+  return 2 * i + 1;
+}
 
-  int parent(int i)
-  {
-    return i / 2 + 1;
-  }
+int right(int i)
+{
+  return 2 * i + 2;
+}
 
-  int left(int i)
+void maxHeapify(int *&A, int n, int i)
+{
+  int temp;
+  int largest;
+  int l = left(i);
+  int r = right(i);
+  if (l <= n && A[l] > A[i])
   {
-    return 2 * i + 1;
+    largest = l;
   }
+  else
+  {
+    largest = i;
+  }
+  if (r <= n && A[r] > A[largest])
+  {
+    largest = r;
+  }
+  if (largest != i)
+  {
+    temp = A[i];
+    A[i] = A[largest];
+    A[largest] = temp;
 
-  int right(int i)
-  {
-    return 2 * i + 2;
+    maxHeapify(A, n, largest);
   }
+}
 
-  void maxHeapify(int i)
-  {
-    int largest;
-    int l = left(i);
-    int r = right(i);
-    if (l <= heapSize && heap[l] > heap[i])
-    {
-      largest = l;
-    }
-    else
-    {
-      largest = i;
-    }
-    // TODO
-  }
-};
+void buildMaxHeapify(int A[], int n)
+{
+  for (int i = n / 2; i >= 0; i--)
+    maxHeapify(A, n, i);
+}
 
 int main()
 {
+  int A[20];
+
+  for (int i = 0; i < 10; i++)
+    cin >> A[i];
+
+  buildMaxHeapify(A, 10);
+
+  for (int i = 0; i < 10; i++)
+    cout << A[i] << " ";
 
   return 0;
 }
