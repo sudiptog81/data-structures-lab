@@ -86,13 +86,19 @@ public:
     }
   }
 
-  Node<int> *search(int key, Node<int> *root)
+  bool search(Node<int> *node, int key)
   {
-    if (root == nullptr || root->data == key)
-      return root;
-    if (root->data < key)
-      return search(key, root->right);
-    return search(key, root->left);
+    if (node == nullptr)
+      return false;
+
+    if (node->data == key)
+      return true;
+
+    bool left = search(node->left, key);
+    if (left)
+      return true;
+    bool right = search(node->right, key);
+    return right;
   }
 
   void inOrderRecursive(Node<int> *root)
@@ -257,12 +263,155 @@ public:
     countNodes(current->left);
     countNodes(current->right);
   }
+
+  void deleteByMerging(Node<int> *temp, int key)
+  {
+    Node<int> *prev = nullptr;
+
+    while (temp != nullptr)
+    {
+      if (temp->data == key)
+        break;
+      prev = temp;
+      if (temp->data < key)
+        temp = temp->right;
+      else
+        temp = temp->left;
+    }
+
+    if (temp != nullptr && temp->data == key)
+    {
+      if (temp == root)
+        mergeHelper(root);
+      else if (prev->left == temp)
+        mergeHelper(prev->left);
+      else
+        mergeHelper(prev->right);
+    }
+    else if (root != nullptr)
+      cout << "\nNode Not Found...";
+
+    return;
+  }
+
+  void mergeHelper(Node<int> *&node)
+  {
+    Node<int> *temp = node;
+
+    if (node == nullptr)
+      return;
+
+    // no right child - single child
+    if (node->right == nullptr)
+      node = node->left;
+
+    // no left child - single chold
+    else if (node->left == nullptr)
+      node = node->right;
+
+    // node has both children
+    else
+    {
+      // find in-order predecessor
+      temp = node->left;
+      while (temp->right != nullptr)
+        temp = temp->right;
+      // merge subtree to predecessor
+      temp->right = node->right;
+      temp = node;
+      node = node->left;
+    }
+
+    // delete the node
+    delete temp;
+
+    return;
+  }
+
+  void deleteByCopying(Node<int> *temp, int key)
+  {
+    Node<int> *prev = nullptr;
+
+    while (temp != nullptr && temp->data != key)
+    {
+      prev = temp;
+      if (temp->data < key)
+        temp = temp->right;
+      else
+        temp = temp->left;
+    }
+
+    if (temp != nullptr && temp->data == key)
+    {
+      if (temp == root)
+        copyHelper(root);
+      else if (prev->left == temp)
+        copyHelper(prev->left);
+      else
+        copyHelper(prev->right);
+    }
+    else if (root != nullptr)
+      cout << "\nNode Not Found...";
+
+    return;
+  }
+
+  void copyHelper(Node<int> *&node)
+  {
+    Node<int> *prev, *temp = node;
+
+    // no right child - single child
+    if (node->right == nullptr)
+      node = node->left;
+
+    // no left child - single chold
+    else if (node->left == nullptr)
+      node = node->right;
+
+    // node has both children
+    else
+    {
+      prev = node;
+      // find the in-order predecessor
+      temp = node->left;
+      while (temp->right != nullptr)
+      {
+        prev = temp;
+        temp = temp->right;
+      }
+      // copy the prdecessor key
+      node->data = temp->data;
+      // handle dangling subtrees
+      if (prev == node)
+        prev->left = temp->left;
+      else
+        prev->right = temp->left;
+    }
+
+    // delete the node
+    delete temp;
+
+    return;
+  }
+
+  void searchAndReplace(int key, int newKey)
+  {
+    if (search(root, key))
+    {
+      deleteByMerging(root, key);
+      insert(newKey, root);
+    }
+    else
+    {
+      cout << "Node Not Found...";
+    }
+  }
 };
 
 int main(void)
 {
-  int choice, data;
   BinarySearchTree tree;
+  int choice, data, data2;
 
   do
   {
@@ -295,7 +444,7 @@ int main(void)
       cout << "\nEnter Search Data: ";
       cin >> data;
       cout << "Search Result: ";
-      if (tree.search(data, tree.root))
+      if (tree.search(tree.root, data))
         cout << "Found";
       else
         cout << "Not Found";
@@ -332,8 +481,10 @@ int main(void)
       break;
     case 6:
       cout << endl;
+      tree.mirror(tree.root);
       cout << "Tree converted to its Mirror Tree..."
            << endl;
+      break;
     case 7:
       tree.countLeaf = tree.countNonLeaf = 0;
       tree.countNodes(tree.root);
@@ -347,11 +498,30 @@ int main(void)
                   tree.countLeaf
            << endl;
       break;
+    case 8:
+
+      cout << "\nEnter Search Data: ";
+      cin >> data;
+      cout << "Enter Replacement: ";
+      cin >> data2;
+      tree.searchAndReplace(data, data2);
+      break;
     case 9:
       cout << endl;
       cout << "Height of Tree: "
            << tree.height(tree.root)
            << endl;
+      break;
+    case 10:
+      cout << "\nEnter Node to Delete: ";
+      cin >> data;
+      tree.deleteByMerging(tree.root, data);
+      break;
+    case 11:
+      cout << "\nEnter Node to Delete: ";
+      cin >> data;
+      tree.deleteByCopying(tree.root, data);
+      break;
     case 0:
     default:
       break;
