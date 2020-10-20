@@ -1,10 +1,10 @@
 /**
- * Write a menu driven program to implement Max_Priority_Queue
+ * Write a menu driven program to implement Min_Priority_Queue
  * that supports the following operations:
- *``  (a) Heap-Increase_Key
- *``  (b) Max_Heap_Insert
- *``  (c) Heap_Maximum
- *``  (d) Heap_Extract_Max
+ *``  (a) Heap-Decrease_Key
+ *``  (b) Min_Heap_Insert
+ *``  (c) Heap_Minimum
+ *``  (d) Heap_Extract_Min
  * 
  * Written by Sudipto Ghosh for the University of Delhi
  */
@@ -44,52 +44,52 @@ public:
     return 2 * i + 2;
   }
 
-  void maxHeapify(int *&A, int n, int i)
+  void minHeapify(int *&A, int n, int i)
   {
     int temp;
-    int largest;
+    int least;
     int l = left(i);
     int r = right(i);
-    if (l < n && A[l] > A[i])
+    if (l < n && A[l] <= A[i])
     {
-      largest = l;
+      least = l;
     }
     else
     {
-      largest = i;
+      least = i;
     }
-    if (r < n && A[r] > A[largest])
+    if (r < n && A[r] <= A[least])
     {
-      largest = r;
+      least = r;
     }
-    if (largest != i)
+    if (least != i)
     {
       temp = A[i];
-      A[i] = A[largest];
-      A[largest] = temp;
-      maxHeapify(A, n, largest);
+      A[i] = A[least];
+      A[least] = temp;
+      minHeapify(A, n, least);
     }
   }
 
-  void buildMaxHeap()
+  void buildMinHeap()
   {
     for (int i = heapSize / 2; i >= 0; i--)
-      maxHeapify(heap, heapSize, i);
+      minHeapify(heap, heapSize, i);
   }
 };
 
-class MaxPriorityQueue
+class MinPriorityQueue
 {
 public:
   Heap *heap;
 
-  MaxPriorityQueue(int A[], int n)
+  MinPriorityQueue(int A[], int n)
   {
     heap = new Heap(A, n);
-    heap->buildMaxHeap();
+    heap->buildMinHeap();
   }
 
-  ~MaxPriorityQueue()
+  ~MinPriorityQueue()
   {
     delete heap;
   }
@@ -110,16 +110,16 @@ public:
       cout << heap->heap[i] << " ";
   }
 
-  void heapIncreaseKey(int i, int key)
+  void heapDecreaseKey(int i, int key)
   {
     int temp;
-    if (key < heap->heap[i])
+    if (key >= heap->heap[i])
     {
-      cerr << "ERROR: New Key is smaller than Existing Key";
+      cerr << "ERROR: New Key is larger than Existing Key";
       return;
     }
     heap->heap[i] = key;
-    while (i > 0 && heap->heap[heap->parent(i)] < heap->heap[i])
+    while (i > 0 && heap->heap[heap->parent(i)] >= heap->heap[i])
     {
       temp = heap->heap[heap->parent(i)];
       heap->heap[heap->parent(i)] = heap->heap[i];
@@ -128,14 +128,14 @@ public:
     }
   }
 
-  void maxHeapInsert(int key)
+  void minHeapInsert(int key)
   {
     heap->heapSize++;
-    heap->heap[heap->heapSize - 1] = INT8_MIN;
-    heapIncreaseKey(heap->heapSize - 1, key);
+    heap->heap[heap->heapSize - 1] = INT8_MAX;
+    heapDecreaseKey(heap->heapSize - 1, key);
   }
 
-  int heapMaximum()
+  int heapMinimum()
   {
     if (heap->heapSize == 0)
     {
@@ -145,7 +145,7 @@ public:
     return heap->heap[0];
   }
 
-  int heapExtractMax()
+  int heapExtractMin()
   {
     if (heap->heapSize < 0)
     {
@@ -157,17 +157,17 @@ public:
       cerr << "ERROR: Heap Empty";
       return -1;
     }
-    int max = heap->heap[0];
+    int min = heap->heap[0];
     heap->heap[0] = heap->heap[heap->heapSize];
-    heap->maxHeapify(heap->heap, --heap->heapSize, 0);
-    return max;
+    heap->minHeapify(heap->heap, --heap->heapSize, 0);
+    return min;
   }
 };
 
 int main(void)
 {
   int idx, key;
-  int n, choice = 1, A[MAX_SIZE] = {INT8_MAX};
+  int n, choice = 1, A[MAX_SIZE] = {0};
 
   cout << "Initial Data\n============\n";
   cout << "Enter Number of Nodes: ";
@@ -177,14 +177,14 @@ int main(void)
     cin >> A[i];
   clrscr();
 
-  MaxPriorityQueue queue(A, n);
+  MinPriorityQueue queue(A, n);
 
   do
   {
-    cout << "\t   Max Priority Queue\n"
+    cout << "\t   Min Priority Queue\n"
          << "===========================================\n"
-         << "  (1) HeapIncreaseKey  (2) MaxHeapInsert\n"
-         << "  (3) HeapMaximum      (4) HeapExtractMax\n"
+         << "  (1) HeapDecreaseKey  (2) MinHeapInsert\n"
+         << "  (3) HeapMinimum      (4) HeapExtractMin\n"
          << "  (5) Display          (0) Exit\n\n";
     cout << "Enter Choice: ";
     cin >> choice;
@@ -197,28 +197,28 @@ int main(void)
       cin >> idx;
       cout << "Enter New Key: ";
       cin >> key;
-      queue.heapIncreaseKey(idx - 1, key);
+      queue.heapDecreaseKey(idx - 1, key);
       cout << endl;
       break;
     case 2:
       cout << endl;
       cout << "Enter Key: ";
       cin >> key;
-      queue.maxHeapInsert(key);
+      queue.minHeapInsert(key);
       break;
     case 3:
       cout << endl;
-      key = queue.heapMaximum();
+      key = queue.heapMinimum();
       if (key != -1)
-        cout << "Heap Maximum: "
+        cout << "Heap Minimum: "
              << key << endl;
       break;
     case 4:
       cout << endl;
-      key = queue.heapExtractMax();
+      key = queue.heapExtractMin();
       if (key != -1)
       {
-        cout << "After Heap Extract Max: ";
+        cout << "After Heap Extract Min: ";
         queue.display();
         cout << endl;
       }
