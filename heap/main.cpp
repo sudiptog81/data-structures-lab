@@ -1,3 +1,10 @@
+/**
+ * WAP to implement Max-Heapify Property on a given 
+ * input array.
+ * 
+ * Written by Sudipto Ghosh for the University of Delhi
+ */
+
 #include <iostream>
 
 using namespace std;
@@ -7,7 +14,7 @@ int heapSize;
 
 int parent(int i)
 {
-  return i / 2 + 1;
+  return (i - 1) / 2;
 }
 
 int left(int i)

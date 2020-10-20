@@ -1,2 +1,89 @@
-1 2 3 4 5 6 7 8 9 10
-10 9 7 8 5 6 3 1 4 2
+Initial Data
+============
+Enter Number of Nodes: 10
+Enter Keys of the Nodes: 14 8 10 4 7 9 3 2 1 6
+
+           Max Priority Queue
+===========================================
+  (1) HeapIncreaseKey  (2) MaxHeapInsert   
+  (3) HeapMaximum      (4) HeapExtractMax
+  (5) Display          (0) Exit
+
+Enter Choice: 5
+
+14 8 10 4 7 9 3 2 1 6       
+
+Press any key to continue...
+
+           Max Priority Queue
+===========================================
+  (1) HeapIncreaseKey  (2) MaxHeapInsert   
+  (3) HeapMaximum      (4) HeapExtractMax  
+  (5) Display          (0) Exit
+
+Enter Choice: 1
+
+Enter Position: 10
+Enter New Key: 26
+
+Press any key to continue...
+
+           Max Priority Queue
+===========================================
+  (1) HeapIncreaseKey  (2) MaxHeapInsert   
+  (3) HeapMaximum      (4) HeapExtractMax  
+  (5) Display          (0) Exit
+
+Enter Choice: 5
+
+26 14 10 4 8 9 3 2 1 7      
+
+Press any key to continue...
+
+           Max Priority Queue
+===========================================
+  (1) HeapIncreaseKey  (2) MaxHeapInsert   
+  (3) HeapMaximum      (4) HeapExtractMax
+  (5) Display          (0) Exit
+
+Enter Choice: 2
+
+Enter Key: 40
+
+Press any key to continue...
+
+           Max Priority Queue
+===========================================
+  (1) HeapIncreaseKey  (2) MaxHeapInsert
+  (3) HeapMaximum      (4) HeapExtractMax
+  (5) Display          (0) Exit
+
+Enter Choice: 5
+
+40 26 10 4 14 9 3 2 1 7 8   
+
+Press any key to continue...
+
+           Max Priority Queue
+===========================================
+  (1) HeapIncreaseKey  (2) MaxHeapInsert
+  (3) HeapMaximum      (4) HeapExtractMax
+  (5) Display          (0) Exit
+
+Enter Choice: 3
+
+Heap Maximum: 40
+
+Press any key to continue...
+
+           Max Priority Queue
+===========================================
+  (1) HeapIncreaseKey  (2) MaxHeapInsert
+  (3) HeapMaximum      (4) HeapExtractMax
+  (5) Display          (0) Exit
+
+Enter Choice: 4
+
+After Heap Extract Max: 26 14 10 4 8 9 3 2 1 7 
+
+Press any key to continue...
