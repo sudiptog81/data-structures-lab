@@ -182,7 +182,7 @@ public:
     if (root != nullptr)
     {
       inOrderRecursive(root->left);
-      cout << root->data << " ";
+      cout << root->data << " (" << root->balanceFactor << ") ";
       inOrderRecursive(root->right);
     }
   }
@@ -191,7 +191,7 @@ public:
   {
     if (root != nullptr)
     {
-      cout << root->data << " ";
+      cout << root->data << " (" << root->balanceFactor << ") ";
       preOrderRecursive(root->left);
       preOrderRecursive(root->right);
     }
@@ -203,7 +203,7 @@ public:
     {
       postOrderRecursive(root->left);
       postOrderRecursive(root->right);
-      cout << root->data << " ";
+      cout << root->data << " (" << root->balanceFactor << ") ";
     }
   }
 
