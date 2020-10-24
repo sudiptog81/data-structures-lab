@@ -224,71 +224,76 @@ public:
     }
   }
 
-  // void deleteByCopying(Node<int> *temp, int key)
-  // {
-  //   Node<int> *prev = nullptr;
+  Node<int> *deleteByCopying(Node<int> *current, int key)
+  {
+    if (key < current->data)
+      current->left = deleteByCopying(current->left, key);
+    else if (key > current->data)
+      current->right = deleteByCopying(current->right, key);
+    else
+    {
+      // node with only one child or no child
+      if ((current->left == nullptr) ||
+          (current->right == nullptr))
+      {
+        Node<int> *temp = current->left ? current->left : current->right;
+        if (temp == nullptr)
+        {
+          temp = current;
+          current = nullptr;
+        }
+        else
+          *current = *temp;
+        delete temp;
+      }
+      else
+      {
+        // copy inorder predecessor
+        Node<int> *temp = current->left;
+        while (temp->right != nullptr)
+          temp = temp->right;
+        current->data = temp->data;
+        current->right = deleteByCopying(current->right,
+                                         temp->data);
+      }
+    }
 
-  //   while (temp != nullptr && temp->data != key)
-  //   {
-  //     prev = temp;
-  //     if (temp->data < key)
-  //       temp = temp->right;
-  //     else
-  //       temp = temp->left;
-  //   }
+    if (current == nullptr)
+      return current;
 
-  //   if (temp != nullptr && temp->data == key)
-  //   {
-  //     if (temp == root)
-  //       copyHelper(root);
-  //     else if (prev->left == temp)
-  //       copyHelper(prev->left);
-  //     else
-  //       copyHelper(prev->right);
-  //   }
-  //   else if (root != nullptr)
-  //     cout << "\nNode Not Found...";
+    current->height = 1 + max(height(current->left),
+                              height(current->right));
 
-  //   return;
-  // }
+    current->balanceFactor = getBalanceFactor(current);
 
-  // void copyHelper(Node<int> *&node)
-  // {
-  //   Node<int> *prev, *temp = node;
+    // R(0) and R(-1)
+    if (current->balanceFactor < -1 &&
+        getBalanceFactor(current->left) <= 0)
+      return rightRotate(current);
 
-  //   // no right child - single child
-  //   if (node->right == nullptr)
-  //     node = node->left;
+    // R(+1)
+    if (current->balanceFactor < -1 &&
+        getBalanceFactor(current->left) > 0)
+    {
+      current->left = leftRotate(current->left);
+      return rightRotate(current);
+    }
 
-  //   // no left child - single chold
-  //   else if (node->left == nullptr)
-  //     node = node->right;
+    // L(0) and L(+1)
+    if (current->balanceFactor > 1 &&
+        getBalanceFactor(current->right) >= 0)
+      return leftRotate(current);
 
-  //   // node has both children
-  //   else
-  //   {
-  //     prev = node;
-  //     // find the in-order predecessor
-  //     temp = node->left;
-  //     while (temp->right != nullptr)
-  //     {
-  //       prev = temp;
-  //       temp = temp->right;
-  //     }
-  //     // copy the prdecessor key
-  //     node->data = temp->data;
-  //     // handle dangling subtrees
-  //     if (prev == node)
-  //       prev->left = temp->left;
-  //     else
-  //       prev->right = temp->left;
-  //   }
+    // L(-1)
+    if (current->balanceFactor > 1 &&
+        getBalanceFactor(current->right) < 0)
+    {
+      current->right = rightRotate(current->right);
+      return leftRotate(current);
+    }
 
-  //   // delete the node
-  //   delete temp;
-
-  //   return;
-  // }
+    return current;
+  }
 };
 
 int main(void)
@@ -340,7 +345,7 @@ int main(void)
     case 4:
       cout << "\nEnter Node to Delete: ";
       cin >> data;
-      // tree.deleteByCopying(tree.root, data);
+      tree.root = tree.deleteByCopying(tree.root, data);
       break;
     case 0:
     default:
