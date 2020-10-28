@@ -1,0 +1,84 @@
+Enter Number of Rows: 3
+Enter Number of Columns: 3
+
+      MENU      
+================
+(1) Display     
+(2) Store       
+(3) Retrieve    
+(0) Exit        
+
+Enter Choice: 2 
+Enter Data: 3
+Enter Position: 0 2
+
+Press any key to continue...
+
+      MENU      
+================
+(1) Display     
+(2) Store       
+(3) Retrieve    
+(0) Exit        
+
+Enter Choice: 2 
+Enter Data: 5
+Enter Position: 1 1
+
+Press any key to continue...
+
+      MENU
+================
+(1) Display
+(2) Store
+(3) Retrieve
+(0) Exit
+
+Enter Choice: 1
+
+Matrix:
+0 0 3
+0 5 0
+0 0 0
+
+Press any key to continue...
+
+      MENU      
+================
+(1) Display     
+(2) Store       
+(3) Retrieve    
+(0) Exit        
+
+Enter Choice: 2 
+Enter Data: 7
+Enter Position: 2 0
+ERROR: Invalid Location     
+
+Press any key to continue...
+
+      MENU
+================
+(1) Display
+(2) Store
+(3) Retrieve
+(0) Exit
+
+Enter Choice: 3
+Enter Position: 0 2
+Retrieved 3
+
+Press any key to continue...
+
+      MENU      
+================
+(1) Display     
+(2) Store       
+(3) Retrieve    
+(0) Exit        
+
+Enter Choice: 3 
+Enter Position: 1 1
+Retrieved 5
+
+Press any key to continue...
