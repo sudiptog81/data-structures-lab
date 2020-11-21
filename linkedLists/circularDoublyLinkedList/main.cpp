@@ -81,8 +81,34 @@ public:
   }
 
   // Inserts a node at a specified location - O(n)
-  void insertAtLoc(int loc, T info)
+  void insertAtLoc(T searchEle, T info)
   {
+    int loc = 0;
+
+    if (this->isEmpty())
+    {
+      cout << "List Empty...\n";
+      return;
+    }
+
+    int i = 0;
+    Node<T> *temp = tail->next;
+    do
+    {
+      ++i;
+      if (temp->info == searchEle)
+        loc = i;
+      temp = temp->next;
+    } while (temp != tail->next);
+
+    if (loc == 0)
+    {
+      cout << "Search Element Not Found...\n";
+      return;
+    }
+
+    loc++;
+
     if (loc == 1)
     {
       this->insertFront(info);
@@ -99,7 +125,7 @@ public:
       this->insertBack(info);
       return;
     }
-    Node<T> *temp = tail->next;
+    temp = tail->next;
     for (int i = 1; temp->next != tail && i < loc - 1; i++)
       temp = temp->next;
     Node<T> *node = new Node<T>();
@@ -162,13 +188,32 @@ public:
   }
 
   // Removes a node at a specified location - O(n)
-  void deleteAtLoc(int loc)
+  void deleteAtLoc(T ele)
   {
+    int loc = 0;
+
     if (this->isEmpty())
     {
-      cout << "\nList is empty...\n";
+      cout << "List Empty...\n";
       return;
     }
+
+    int i = 0;
+    Node<T> *temp = tail->next;
+    do
+    {
+      ++i;
+      if (temp->info == ele)
+        loc = i;
+      temp = temp->next;
+    } while (temp != tail->next);
+
+    if (loc == 0)
+    {
+      cout << "Search Element Not Found...\n";
+      return;
+    }
+
     int size = this->count();
     if (loc > size || loc < 1)
     {
@@ -180,7 +225,7 @@ public:
       this->deleteBack();
       return;
     }
-    Node<T> *temp = tail->next;
+    temp = tail->next;
     for (int i = 1; temp->next != tail && i < loc; i++)
       temp = temp->next;
     temp->prev->next = temp->next;
@@ -242,26 +287,44 @@ public:
     return;
   }
 
+  // Concatenates two lists - O(n)
+  void concat(CircularDoublyLinkedList<T> &list)
+  {
+    if (!list.isEmpty() && !this->isEmpty())
+    {
+      tail->next->prev = list.tail;
+      Node<T> *temp = tail->next;
+      tail->next = list.tail->next;
+      list.tail->next = temp;
+      tail = list.tail;
+      cout << "Concatenated two lists...\n";
+      this->display();
+    }
+    else
+      cout << "\nOne of the lists is empty...\n";
+    return;
+  }
+
+  // Overloads the + operator - O(n)
+  void operator+(CircularDoublyLinkedList<T> &list)
+  {
+    this->concat(list);
+    return;
+  }
+
   // Searches for an element - O(n)
-  void search(T ele)
+  Node<T> *search(T ele)
   {
     if (this->isEmpty())
-    {
-      cout << "\nList is empty...\n";
-      return;
-    }
+      return nullptr;
     Node<T> *temp = tail->next;
     do
     {
       if (temp->info == ele)
-      {
-        cout << "Element " << ele << " found...\n";
-        return;
-      }
+        return temp;
       temp = temp->next;
     } while (temp != tail->next);
-    cout << "Element not found...\n";
-    return;
+    return nullptr;
   }
 
   // Calculates the number of nodes - O(n)
@@ -305,17 +368,17 @@ public:
 int main(void)
 {
   int info, ele, choice, loc, count;
-  CircularDoublyLinkedList<int> list;
+  CircularDoublyLinkedList<int> list, list2;
   do
   {
     cout << "\tCircular Doubly Linked List\n"
          << "===================================\n"
-         << "  (1) Search      (2) InsertFront\n"
-         << "  (3) InsertBack  (4) InsertAtLoc\n"
-         << "  (5) DeleteFront (6) DeleteBack\n"
-         << "  (7) DeleteAtLoc (8) Display\n"
-         << "  (9) Count       (10) Reverse\n"
-         << "  (0) Exit\n\n";
+         << "  (1)  Search      (2)  InsertFront\n"
+         << "  (3)  InsertBack  (4)  InsertAtLoc\n"
+         << "  (5)  DeleteFront (6)  DeleteBack\n"
+         << "  (7)  DeleteAtLoc (8)  Display\n"
+         << "  (9)  Count       (10) Reverse\n"
+         << "  (11) Concat      (0)  Exit\n\n";
     cout << "Enter Choice: ";
     cin >> choice;
     switch (choice)
@@ -323,24 +386,27 @@ int main(void)
     case 1:
       cout << "\nEnter Search Element: ";
       cin >> ele;
-      list.search(ele);
+      if (list.search(ele) != nullptr)
+        cout << "Element " << ele << " found...\n";
+      else
+        cout << "Element not found or List is Empty...\n";
       break;
     case 2:
-      cout << "\nEnter Payload: ";
+      cout << "\nEnter Element: ";
       cin >> info;
       list.insertFront(info);
       break;
     case 3:
-      cout << "\nEnter Payload: ";
+      cout << "\nEnter Element: ";
       cin >> info;
       list.insertBack(info);
       break;
     case 4:
-      cout << "\nEnter Location: ";
-      cin >> loc;
-      cout << "Enter Payload: ";
+      cout << "\nInsert After: ";
+      cin >> ele;
+      cout << "Enter Element: ";
       cin >> info;
-      list.insertAtLoc(loc, info);
+      list.insertAtLoc(ele, info);
       break;
     case 5:
       list.deleteFront();
@@ -349,9 +415,9 @@ int main(void)
       list.deleteBack();
       break;
     case 7:
-      cout << "\nEnter Location: ";
-      cin >> loc;
-      list.deleteAtLoc(loc);
+      cout << "\nEnter Element: ";
+      cin >> ele;
+      list.deleteAtLoc(ele);
       break;
     case 8:
       list.display();
@@ -363,6 +429,25 @@ int main(void)
       break;
     case 10:
       list.reverse();
+      break;
+    case 11:
+      if (!list2.isEmpty())
+      {
+        cout << "\nList B:";
+        list2.display();
+      }
+      cout << "\nNumber of Nodes to add in List B: ";
+      cin >> count;
+      if (count)
+      {
+        cout << "Enter Elements to List B: ";
+        for (int i = 0; i < count; i++)
+        {
+          cin >> info;
+          list2.insertBack(info);
+        }
+        list + list2;
+      }
       break;
     case 0:
     default:

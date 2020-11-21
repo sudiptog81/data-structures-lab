@@ -256,25 +256,18 @@ public:
   }
 
   // Searches for an element - O(n)
-  void search(T ele)
+  Node<T> *search(T ele)
   {
     if (this->isEmpty())
-    {
-      cout << "\nList is empty...\n";
-      return;
-    }
+      return nullptr;
     Node<T> *temp = head;
     while (temp != NULL)
     {
       if (temp->info == ele)
-      {
-        cout << "Element " << ele << " found...\n";
-        return;
-      }
+        return temp;
       temp = temp->ptr;
     }
-    cout << "Element not found...\n";
-    return;
+    return nullptr;
   }
 
   // Calculates the number of nodes - O(n)
@@ -321,12 +314,12 @@ int main(void)
   {
     cout << "\tSingly Linked List\n"
          << "===================================\n"
-         << "  (1) Search      (2) InsertFront\n"
-         << "  (3) InsertBack  (4) InsertAtLoc\n"
-         << "  (5) DeleteFront (6) DeleteBack\n"
-         << "  (7) DeleteAtLoc (8) Display\n"
-         << "  (9) Count       (10) Reverse\n"
-         << "  (11) Concat     (0) Exit\n\n";
+         << "  (1)  Search      (2)  InsertFront\n"
+         << "  (3)  InsertBack  (4)  InsertAtLoc\n"
+         << "  (5)  DeleteFront (6)  DeleteBack\n"
+         << "  (7)  DeleteAtLoc (8)  Display\n"
+         << "  (9)  Count       (10) Reverse\n"
+         << "  (11) Concat      (0)  Exit\n\n";
     cout << "Enter Choice: ";
     cin >> choice;
     switch (choice)
@@ -334,22 +327,25 @@ int main(void)
     case 1:
       cout << "\nEnter Search Element: ";
       cin >> ele;
-      list.search(ele);
+      if (list.search(ele) != nullptr)
+        cout << "Element " << ele << " found...\n";
+      else
+        cout << "Element not found or List is Empty...\n";
       break;
     case 2:
-      cout << "\nEnter Payload: ";
+      cout << "\nEnter Element: ";
       cin >> info;
       list.insertFront(info);
       break;
     case 3:
-      cout << "\nEnter Payload: ";
+      cout << "\nEnter Element: ";
       cin >> info;
       list.insertBack(info);
       break;
     case 4:
       cout << "\nEnter Location: ";
       cin >> loc;
-      cout << "Enter Payload: ";
+      cout << "Enter Element: ";
       cin >> info;
       list.insertAtLoc(loc, info);
       break;

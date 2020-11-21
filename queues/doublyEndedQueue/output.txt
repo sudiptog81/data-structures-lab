@@ -1,6 +1,4 @@
-Enter Size of Queue: 5
-
-        Circular Queue - Array
+        Linear Queue - SLList
 ===================================
   (1) Enqueue  (2) Dequeue
   (3) Front    (4) Clear
@@ -15,7 +13,7 @@ Queue: 1
 
 Press any key to continue...
 
-        Circular Queue - Array
+        Linear Queue - SLList
 ===================================
   (1) Enqueue  (2) Dequeue
   (3) Front    (4) Clear
@@ -26,11 +24,11 @@ Enter Choice: 1
 Enter Element: 2
 
 Enqueued 2...
-Queue: 1 <- 2
+Queue: 1 -> 2
 
 Press any key to continue...
 
-        Circular Queue - Array
+        Linear Queue - SLList
 ===================================
   (1) Enqueue  (2) Dequeue
   (3) Front    (4) Clear
@@ -41,41 +39,11 @@ Enter Choice: 1
 Enter Element: 3
 
 Enqueued 3...
-Queue: 1 <- 2 <- 3
+Queue: 1 -> 2 -> 3
 
 Press any key to continue...
 
-        Circular Queue - Array
-===================================
-  (1) Enqueue  (2) Dequeue
-  (3) Front    (4) Clear
-  (5) Display  (0) Exit
-
-Enter Choice: 1
-
-Enter Element: 4
-
-Enqueued 4...
-Queue: 1 <- 2 <- 3 <- 4
-
-Press any key to continue...
-
-        Circular Queue - Array
-===================================
-  (1) Enqueue  (2) Dequeue
-  (3) Front    (4) Clear
-  (5) Display  (0) Exit
-
-Enter Choice: 1
-
-Enter Element: 5
-
-Enqueued 5...
-Queue: 1 <- 2 <- 3 <- 4 <- 5
-
-Press any key to continue...
-
-        Circular Queue - Array
+        Linear Queue - SLList
 ===================================
   (1) Enqueue  (2) Dequeue
   (3) Front    (4) Clear
@@ -84,26 +52,23 @@ Press any key to continue...
 Enter Choice: 2
 
 Dequeued 1...
-Queue: 2 <- 3 <- 4 <- 5
+Queue: 2 -> 3
 
 Press any key to continue...
 
-        Circular Queue - Array
+        Linear Queue - SLList
 ===================================
   (1) Enqueue  (2) Dequeue
   (3) Front    (4) Clear
   (5) Display  (0) Exit
 
-Enter Choice: 1
+Enter Choice: 3
 
-Enter Element: 6
-
-Enqueued 6...
-Queue: 2 <- 3 <- 4 <- 5 <- 6
+Front Element: 2
 
 Press any key to continue...
 
-        Circular Queue - Array
+        Linear Queue - SLList
 ===================================
   (1) Enqueue  (2) Dequeue
   (3) Front    (4) Clear
@@ -112,23 +77,11 @@ Press any key to continue...
 Enter Choice: 2
 
 Dequeued 2...
-Queue: 3 <- 4 <- 5 <- 6
+Queue: 3
 
 Press any key to continue...
 
-        Circular Queue - Array
-===================================
-  (1) Enqueue  (2) Dequeue
-  (3) Front    (4) Clear
-  (5) Display  (0) Exit
-
-Enter Choice: 3
-
-Front Element: 3
-
-Press any key to continue...
-
-        Circular Queue - Array
+        Linear Queue - SLList
 ===================================
   (1) Enqueue  (2) Dequeue
   (3) Front    (4) Clear
@@ -137,11 +90,25 @@ Press any key to continue...
 Enter Choice: 2
 
 Dequeued 3...
-Queue: 4 <- 5 <- 6
+Queue: Queue Empty
+Press any key to continue...
+
+        Linear Queue - SLList
+===================================
+  (1) Enqueue  (2) Dequeue
+  (3) Front    (4) Clear
+  (5) Display  (0) Exit
+
+Enter Choice: 1
+
+Enter Element: 1
+
+Enqueued 1...
+Queue: 1
 
 Press any key to continue...
 
-        Circular Queue - Array
+        Linear Queue - SLList
 ===================================
   (1) Enqueue  (2) Dequeue
   (3) Front    (4) Clear
@@ -149,32 +116,6 @@ Press any key to continue...
 
 Enter Choice: 2
 
-Dequeued 4...
-Queue: 5 <- 6
-
-Press any key to continue...
-
-        Circular Queue - Array
-===================================
-  (1) Enqueue  (2) Dequeue
-  (3) Front    (4) Clear
-  (5) Display  (0) Exit
-
-Enter Choice: 2
-
-Dequeued 5...
-Queue: 6
-
-Press any key to continue...
-
-        Circular Queue - Array
-===================================
-  (1) Enqueue  (2) Dequeue
-  (3) Front    (4) Clear
-  (5) Display  (0) Exit
-
-Enter Choice: 2
-
-Dequeued 6...
+Dequeued 1...
 Queue: Queue Empty
 Press any key to continue...

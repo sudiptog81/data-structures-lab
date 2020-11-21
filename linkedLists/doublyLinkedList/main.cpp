@@ -223,26 +223,53 @@ public:
     return;
   }
 
+  // Concatenates two lists - O(n)
+  void concat(DoublyLinkedList<T> &list)
+  {
+    if (!list.isEmpty() && !this->isEmpty())
+    {
+      Node<T> *node,
+          *temp = tail,
+          *temp1 = list.head;
+      while (temp1 != NULL)
+      {
+        node = new Node<T>();
+        node->info = temp1->info;
+        node->next = NULL;
+        node->prev = temp;
+        temp->next = node;
+        temp = temp->next;
+        temp1 = temp1->next;
+      }
+      tail = node;
+      cout << "Concatenated two lists...\n";
+      this->display();
+    }
+    else
+      cout << "\nOne of the lists is empty...\n";
+    return;
+  }
+
+  // Overloads the + operator - O(n)
+  void operator+(DoublyLinkedList<T> &list)
+  {
+    this->concat(list);
+    return;
+  }
+
   // Searches for an element - O(n)
-  void search(T ele)
+  Node<T> *search(T ele)
   {
     if (this->isEmpty())
-    {
-      cout << "\nList is empty...\n";
-      return;
-    }
+      return nullptr;
     Node<T> *temp = head;
     while (temp != NULL)
     {
       if (temp->info == ele)
-      {
-        cout << "Element " << ele << " found...\n";
-        return;
-      }
+        return temp;
       temp = temp->next;
     }
-    cout << "Element not found...\n";
-    return;
+    return nullptr;
   }
 
   // Calculates the number of nodes - O(n)
@@ -284,17 +311,17 @@ public:
 int main(void)
 {
   int info, ele, choice, loc, count;
-  DoublyLinkedList<int> list;
+  DoublyLinkedList<int> list, list2;
   do
   {
     cout << "\tDoubly Linked List\n"
          << "===================================\n"
-         << "  (1) Search      (2) InsertFront\n"
-         << "  (3) InsertBack  (4) InsertAtLoc\n"
-         << "  (5) DeleteFront (6) DeleteBack\n"
-         << "  (7) DeleteAtLoc (8) Display\n"
-         << "  (9) Count       (10) Reverse\n"
-         << "  (0) Exit\n\n";
+         << "  (1)  Search      (2)  InsertFront\n"
+         << "  (3)  InsertBack  (4)  InsertAtLoc\n"
+         << "  (5)  DeleteFront (6)  DeleteBack\n"
+         << "  (7)  DeleteAtLoc (8)  Display\n"
+         << "  (9)  Count       (10) Reverse\n"
+         << "  (11) Concat      (0)  Exit\n\n";
     cout << "Enter Choice: ";
     cin >> choice;
     switch (choice)
@@ -302,22 +329,25 @@ int main(void)
     case 1:
       cout << "\nEnter Search Element: ";
       cin >> ele;
-      list.search(ele);
+      if (list.search(ele) != nullptr)
+        cout << "Element " << ele << " found...\n";
+      else
+        cout << "Element not found or List is Empty...\n";
       break;
     case 2:
-      cout << "\nEnter Payload: ";
+      cout << "\nEnter Element: ";
       cin >> info;
       list.insertFront(info);
       break;
     case 3:
-      cout << "\nEnter Payload: ";
+      cout << "\nEnter Element: ";
       cin >> info;
       list.insertBack(info);
       break;
     case 4:
       cout << "\nEnter Location: ";
       cin >> loc;
-      cout << "Enter Payload: ";
+      cout << "Enter Element: ";
       cin >> info;
       list.insertAtLoc(loc, info);
       break;
@@ -342,6 +372,25 @@ int main(void)
       break;
     case 10:
       list.reverse();
+      break;
+    case 11:
+      if (!list2.isEmpty())
+      {
+        cout << "\nList B:";
+        list2.display();
+      }
+      cout << "\nNumber of Nodes to add in List B: ";
+      cin >> count;
+      if (count)
+      {
+        cout << "Enter Elements to List B: ";
+        for (int i = 0; i < count; i++)
+        {
+          cin >> info;
+          list2.insertBack(info);
+        }
+        list + list2;
+      }
       break;
     case 0:
     default:

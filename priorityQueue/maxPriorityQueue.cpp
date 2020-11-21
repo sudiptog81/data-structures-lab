@@ -1,10 +1,10 @@
 /**
  * Write a menu driven program to implement Max_Priority_Queue
  * that supports the following operations:
- *``  (a) Heap-Increase_Key
- *``  (b) Max_Heap_Insert
- *``  (c) Heap_Maximum
- *``  (d) Heap_Extract_Max
+ *    (a) Heap-Increase_Key
+ *    (b) Max_Heap_Insert
+ *    (c) Heap_Maximum
+ *    (d) Heap_Extract_Max
  * 
  * Written by Sudipto Ghosh for the University of Delhi
  */

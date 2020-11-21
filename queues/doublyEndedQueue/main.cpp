@@ -1,14 +1,11 @@
 /**
- *  Perform the following Queue operations using Circular Linked
- *  List implementation (Use Templates):
- *    (a)	Enqueue
- *    (b)	Dequeue
+ *  Implement Double-ended Queues using Linked List representation.
  * 
  *  Written by Sudipto Ghosh for the University of Delhi
  */
 
 // main.cpp
-#include "circularSinglyLinkedList.hpp"
+#include "doublyLinkedList.hpp"
 
 using namespace std;
 
@@ -16,28 +13,34 @@ void getch();
 void clrscr();
 
 template <class T>
-class Queue
+class DoublyEndedQueue
 {
 protected:
   Node<T> *front, *rear;
-  CircularSinglyLinkedList<T> list;
+  DoublyLinkedList<T> list;
 
 public:
-  Queue()
+  DoublyEndedQueue()
   {
-    this->front = this->list.tail;
+    this->front = this->list.head;
     this->rear = this->list.tail;
   }
 
-  bool enqueue(T ele)
+  void enqueueFront(T ele)
+  {
+    this->list.insertFront(ele);
+    this->front = this->list.head;
+    this->rear = this->list.tail;
+  }
+
+  void enqueueRear(T ele)
   {
     this->list.insertBack(ele);
-    this->front = this->list.tail->ptr;
+    this->front = this->list.head;
     this->rear = this->list.tail;
-    return true;
   }
 
-  T dequeue()
+  T dequeueFront()
   {
     if (this->isEmpty())
     {
@@ -46,10 +49,21 @@ public:
     }
     T temp = this->front->info;
     this->list.deleteFront();
+    this->front = this->list.head;
+    this->rear = this->list.tail;
+    return temp;
+  }
+
+  T dequeueRear()
+  {
     if (this->isEmpty())
-      this->front = this->list.tail;
-    else
-      this->front = this->list.tail->ptr;
+    {
+      cout << "ERROR: Queue Empty\n";
+      return (T)(NULL);
+    }
+    T temp = this->rear->info;
+    this->list.deleteBack();
+    this->front = this->list.head;
     this->rear = this->list.tail;
     return temp;
   }
@@ -90,14 +104,15 @@ public:
 int main(void)
 {
   int el, res, choice;
-  Queue<int> q;
+  DoublyEndedQueue<int> q;
   do
   {
-    cout << "\tCircular Queue - CSLList\n"
-         << "===================================\n"
-         << "  (1) Enqueue  (2) Dequeue\n"
-         << "  (3) Front    (4) Clear\n"
-         << "  (5) Display  (0) Exit\n\n";
+    cout << "\tDoubly Ended Queue - Deque\n"
+         << "====================================\n"
+         << "  (1) EnqueueBack   (2) DequeueRear\n"
+         << "  (3) EnqueueFront  (4) DequeueFront\n"
+         << "  (5) Front         (6) Display\n"
+         << "  (0) Exit\n\n";
     cout << "Enter Choice: ";
     cin >> choice;
     switch (choice)
@@ -105,31 +120,42 @@ int main(void)
     case 1:
       cout << "\nEnter Element: ";
       cin >> el;
-      res = q.enqueue(el);
-      if (res)
-      {
-        cout << "\nEnqueued " << el << "...\n";
-        cout << "Queue: ";
-        q.display();
-      }
+      q.enqueueRear(el);
+      cout << "\nEnqueued " << el << " at rear...\n";
+      cout << "Queue: ";
+      q.display();
       break;
     case 2:
-      res = q.dequeue();
+      res = q.dequeueRear();
       if (res)
       {
-        cout << "\nDequeued " << res << "...\n";
+        cout << "\nDequeued " << res << " from rear...\n";
         cout << "Queue: ";
         q.display();
       }
       break;
     case 3:
+      cout << "\nEnter Element: ";
+      cin >> el;
+      q.enqueueFront(el);
+      cout << "\nEnqueued " << el << " at front...\n";
+      cout << "Queue: ";
+      q.display();
+      break;
+    case 4:
+      res = q.dequeueFront();
+      if (res)
+      {
+        cout << "\nDequeued " << res << " from front...\n";
+        cout << "Queue: ";
+        q.display();
+      }
+      break;
+    case 5:
       cout << "\nFront Element: "
            << q.frontEl() << endl;
       break;
-    case 4:
-      q.clear();
-      break;
-    case 5:
+    case 6:
       cout << "\nQueue: ";
       q.display();
     default:
