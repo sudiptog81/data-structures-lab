@@ -6,20 +6,21 @@
 
 // main.cpp
 #include "stack.hpp"
-#include <cstring>
+#include <cmath>
 #include <string>
+#include <cstring>
 #include <cstdlib>
 #define MAX_STRLEN 256
 
 class PostfixEvaluator
 {
 protected:
-  Stack<int> stack;
+  Stack<float> stack;
 
 public:
-  int evaluate(string &str)
+  float evaluate(string &str)
   {
-    int val1, val2, temp;
+    float val1, val2, temp;
     int size = str.length();
     for (int i = 0; i < size; ++i)
     {
@@ -39,6 +40,9 @@ public:
         val2 = this->stack.pop();
         switch (str[i])
         {
+        case '^':
+          this->stack.push(pow(val2, val1));
+          break;
         case '+':
           this->stack.push(val2 + val1);
           break;
@@ -51,9 +55,9 @@ public:
         case '/':
           this->stack.push(val2 / val1);
           break;
-        case '%':
-          this->stack.push(val2 % val1);
-          break;
+          // case '%':
+          //   this->stack.push(val2 % val1);
+          //   break;
         }
       }
     }

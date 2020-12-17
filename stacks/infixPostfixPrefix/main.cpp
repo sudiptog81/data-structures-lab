@@ -11,12 +11,15 @@
 void getch();
 void clrscr();
 
-class Converter {
+class Converter
+{
 protected:
   Stack<char> stack;
 
-  int precedence(char ch) {
-    switch (ch) {
+  int precedence(char ch)
+  {
+    switch (ch)
+    {
     case '^':
       return 5;
       break;
@@ -37,14 +40,16 @@ protected:
     return -1;
   }
 
-  void swap(char &a, char &b) {
+  void swap(char &a, char &b)
+  {
     char t = b;
     b = a;
     a = t;
     return;
   }
 
-  void reverseStr(string &str) {
+  void reverseStr(string &str)
+  {
     int n = str.length();
     for (int i = 0; i < n / 2; i++)
       swap(str[i], str[n - i - 1]);
@@ -52,23 +57,28 @@ protected:
   }
 
 public:
-  void infixToPostfix(string &infixString, string &postfixString) {
+  void infixToPostfix(string &infixString, string &postfixString)
+  {
     char ch;
     postfixString.clear();
     int length = infixString.length();
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < length; i++)
+    {
       if (infixString[i] == ' ')
         continue;
       else if (isalnum(infixString[i]))
         postfixString += infixString[i];
       else if (infixString[i] == '(')
         this->stack.push('(');
-      else if (infixString[i] == ')') {
+      else if (infixString[i] == ')')
+      {
         while (!this->stack.isEmpty() && this->stack.top() != '(')
           postfixString += this->stack.pop();
         if (this->stack.top() == '(')
           ch = this->stack.pop();
-      } else {
+      }
+      else
+      {
         while (!this->stack.isEmpty() &&
                precedence(infixString[i]) <= precedence(this->stack.top()))
           postfixString += this->stack.pop();
@@ -80,11 +90,13 @@ public:
     return;
   }
 
-  void infixToPrefix(string &infixString, string &prefixString) {
+  void infixToPrefix(string &infixString, string &prefixString)
+  {
     prefixString.clear();
     int length = infixString.length();
     reverseStr(infixString);
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < length; i++)
+    {
       if (infixString[i] == '(')
         infixString[i] = ')';
       else if (infixString[i] == ')')
@@ -95,15 +107,18 @@ public:
     return;
   }
 
-  void postfixToInfix(string &postfixString, string &infixString) {
+  void postfixToInfix(string &postfixString, string &infixString)
+  {
     string op1, op2;
     infixString.clear();
     Stack<string> infixStack;
     int length = postfixString.length();
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < length; i++)
+    {
       if (isalnum(postfixString[i]))
         infixStack.push(string(1, postfixString[i]));
-      else {
+      else
+      {
         op1 = infixStack.pop();
         op2 = infixStack.pop();
         infixStack.push("(" + op2 + postfixString[i] + op1 + ")");
@@ -113,15 +128,18 @@ public:
     return;
   }
 
-  void prefixToInfix(string &prefixString, string &infixString) {
+  void prefixToInfix(string &prefixString, string &infixString)
+  {
     string op1, op2;
     infixString.clear();
     Stack<string> infixStack;
     int length = prefixString.length();
-    for (int i = length - 1; i >= 0; i--) {
+    for (int i = length - 1; i >= 0; i--)
+    {
       if (isalnum(prefixString[i]))
         infixStack.push(string(1, prefixString[i]));
-      else {
+      else
+      {
         op1 = infixStack.pop();
         op2 = infixStack.pop();
         infixStack.push("(" + op1 + prefixString[i] + op2 + ")");
@@ -132,11 +150,13 @@ public:
   }
 };
 
-int main(void) {
+int main(void)
+{
   int choice;
   Converter convert;
   string str = "", str1 = "";
-  do {
+  do
+  {
     cout << "\tMain Menu\n"
          << "==========================\n"
          << "  (1) Infix to Postfix\n"
@@ -147,7 +167,8 @@ int main(void) {
          << "Enter Choice: ";
     cin >> choice;
     cin.ignore();
-    switch (choice) {
+    switch (choice)
+    {
     case 1:
       cout << "Enter Infix Expression: ";
       getline(cin, str);
@@ -179,14 +200,16 @@ int main(void) {
   return 0;
 }
 
-void getch() {
+void getch()
+{
   cout << "\nPress any key to continue...";
   cin.ignore();
   cin.get();
   return;
 }
 
-void clrscr() {
+void clrscr()
+{
 #ifdef _WIN32
   system("cls");
 #elif __unix__
